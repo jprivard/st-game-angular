@@ -1,0 +1,16 @@
+{
+  "AUTH": {
+    "HEADER": "Ouverture de session",
+    "EMAIL": "Courriel",
+    "PASSWORD": "Mot de passe",
+    "LOGIN": "Connexion",
+    "INVALID": "Votre combinaison de courriel et mot de passe ne correspond pas à un compte."
+  },
+  "LIBRARY": {
+    "RACES": {
+      "HUMAN": "Humain",
+      "VULCAN": "Vulcain",
+      "KLINGON": "Klingon"
+    }
+  }
+}
