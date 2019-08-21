@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000/',
+  apiUrl: '/api/',
 };
 
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.

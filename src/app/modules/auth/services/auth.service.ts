@@ -12,26 +12,32 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  check(): Observable<User> {
+  public check(): Observable<User> {
     const url = `${environment.apiUrl}auth/`;
-    return this.http.get<{ user: User }>(url).pipe(map(v => v.user || null));
+    return this.http.get<{ user: User }>(url, this.options()).pipe(map(v => v.user || null));
   }
 
-  login(credentials: Credentials): Observable<User> {
+  public login(credentials: Credentials): Observable<User> {
     const url = `${environment.apiUrl}auth/login`;
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded',
-      Accept: 'application/json'
-    });
     const body = new URLSearchParams();
     body.set('username', credentials.email);
     body.set('password', credentials.password);
-    return this.http.post<{ user: User }>(url, body.toString(), { headers }).pipe(map(v => v.user || null));
+    return this.http.post<{ user: User }>(url, body.toString(), this.options(this.json())).pipe(map(v => v.user || null));
   }
 
-  logout(): Observable<User> {
+  public logout(): Observable<User> {
     const url = `${environment.apiUrl}auth/logout/`;
-    return this.http.get<{ user: User }>(url).pipe(map(v => v.user || null));
+    return this.http.get<{ user: User }>(url, this.options()).pipe(map(v => v.user || null));
   }
 
+  private options(headers?: HttpHeaders) {
+    return { withCredentials: true, headers };
+  }
+
+  private json(): HttpHeaders {
+    return new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Accept: 'application/json'
+    });
+  }
 }
