@@ -5,43 +5,14 @@ import { Character } from '../models/character.model';
   selector: 'app-character-card',
   template: `
     <mat-card>
-      <mat-card-title>{{ character.firstName }} {{ character.lastName }}</mat-card-title>
+      <mat-card-title>{{ character | fullname }}</mat-card-title>
       <mat-card-content>
         <div class="container">
-          <div class="row">
-            <div class="col-12 col-md-4">{{ 'CHARACTER.RANK' | translate }}</div>
-            <div class="col-12 col-md-8">{{ character.rank | translate }}</div>
-          </div>
-          <div class="row">
-            <div class="col-12 col-md-4">{{ 'CHARACTER.RACE' | translate }}</div>
-            <div class="col-12 col-md-8">{{ character.race | translate }}</div>
-          </div>
-          <div class="row">
-            <div class="col-12 col-md-4">{{ 'CHARACTER.DOB' | translate }}</div>
-            <div class="col-12 col-md-8">{{ character.stardateOfBirth | date:'yyyy-MM-dd' }}</div>
-          </div>
-          <div class="row">
-            <div class="col-12 col-md-4">{{ 'CHARACTER.ACTIVE_ASSIGNMENTS' | translate }}</div>
-            <div class="col-12 col-md-8">
-              <ul>
-                <li *ngFor="let assignment of character.assignments.active">
-                  <div class="assignment">{{ assignment.position | translate }} - {{ assignment.ship }}</div>
-                  <div class="date">Depuis {{ assignment.start | date:'yyyy' }}</div>
-              </li>
-              </ul>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 col-md-4">{{ 'CHARACTER.PAST_ASSIGNMENTS' | translate }}</div>
-            <div class="col-12 col-md-8">
-              <ul>
-                <li *ngFor="let assignment of character.assignments.past">
-                  <div class="assignment">{{ assignment.position | translate }} - {{ assignment.ship }}</div>
-                  <div class="date">De {{ assignment.start | date:'yyyy' }} à {{ assignment.end | date:'yyyy' }}</div>
-                </li>
-              </ul>
-            </div>
-          </div>
+          <app-char-row title="CHARACTER.RANK" [data]="character.rank | translate"></app-char-row>
+          <app-char-row title="CHARACTER.RACE" [data]="character.race | translate"></app-char-row>
+          <app-char-row title="CHARACTER.DOB" [data]="character.stardateOfBirth | date:'yyyy-MM-dd'"></app-char-row>
+          <app-assignment title="CHARACTER.ACTIVE_ASSIGNMENTS" [assignments]="character.assignments.active"></app-assignment>
+          <app-assignment title="CHARACTER.PAST_ASSIGNMENTS" [assignments]="character.assignments.past"></app-assignment>
         </div>
       </mat-card-content>
     </mat-card>

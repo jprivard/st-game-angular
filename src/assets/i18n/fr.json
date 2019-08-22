@@ -14,11 +14,15 @@
     "RACE": "Peuple",
     "DOB": "Âge",
     "ACTIVE_ASSIGNMENTS": "Assignation(s)",
-    "PAST_ASSIGNMENTS": "Passées"
+    "PAST_ASSIGNMENTS": "Passées",
+    "SINCE": "Depuis {{ start }}",
+    "FROM_TO": "De {{ start }} à {{ end }}",
+    "ACTIVE_LIST": "Liste des personnages actifs",
+    "CHOOSE": "Choisir ce personnage"
   },
   "LIBRARY": {
     "POSITION": {
-      "CSCI": "Officier SCI [chef]",
+      "CSCI": "Officier SCI en chef",
       "CO": "Officier aux commandes",
       "FO": "Premier Officier",
       "SCI": "Officier SCI"

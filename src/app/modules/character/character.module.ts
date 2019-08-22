@@ -12,12 +12,22 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CharacterPageComponent } from './containers/character-page.component';
 import { CharacterEffects } from './effects';
 import { CharacterCardComponent } from './components/character-card.component';
-import { CharacterSelectionComponent } from './components/character-selection.component copy';
+import { CharacterSelectionComponent } from './components/character-selection.component';
+import { AssignmentPipe, FullnamePipe } from './pipes/assignment.pipe';
+import { AssignmentComponent } from './components/assignment.component';
+import { RowComponent } from './components/row.component';
 
 export const COMPONENTS = [
   CharacterPageComponent,
   CharacterCardComponent,
-  CharacterSelectionComponent
+  AssignmentComponent,
+  CharacterSelectionComponent,
+  RowComponent,
+];
+
+export const PIPES = [
+  AssignmentPipe,
+  FullnamePipe
 ];
 
 @NgModule({
@@ -32,9 +42,10 @@ export const COMPONENTS = [
     StoreModule.forFeature(fromCharacter.characterFeatureKey, fromCharacter.reducer),
     EffectsModule.forFeature([CharacterEffects]),
   ],
-  declarations: COMPONENTS,
+  declarations: [COMPONENTS, PIPES],
   entryComponents: [
     CharacterSelectionComponent
   ],
+  exports: [PIPES]
 })
 export class CharacterModule {}

@@ -7,7 +7,7 @@ import { catchError, exhaustMap, map } from 'rxjs/operators';
 import { CharacterActions } from '../actions';
 import { CharacterService } from '../services';
 import { Character } from '../models/character.model';
-import { CharacterSelectionComponent } from '../components/character-selection.component copy';
+import { CharacterSelectionComponent } from '../components/character-selection.component';
 
 @Injectable()
 export class CharacterEffects {
@@ -35,10 +35,10 @@ export class CharacterEffects {
   chooseCharacter$ = createEffect(() => this.actions$.pipe(
     ofType(CharacterActions.chooseCharacter),
     exhaustMap(() => {
-      const dialogRef = this.dialog.open<CharacterSelectionComponent, undefined, boolean>(CharacterSelectionComponent);
+      const dialogRef = this.dialog.open<CharacterSelectionComponent, undefined, Character>(CharacterSelectionComponent);
       return dialogRef.afterClosed();
     }),
-    map(result => result ? CharacterActions.getCharactersFail({error: ''}) : CharacterActions.getCharactersFail({error: ''}))
+    map((character) => character ? CharacterActions.selectCharacter({ character }) : CharacterActions.getCharactersFail({error: ''}))
   ));
 
   constructor(

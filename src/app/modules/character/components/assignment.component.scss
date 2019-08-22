@@ -1,0 +1,23 @@
+.row {
+  border-bottom: 1px solid #9575CD;
+  .col-md-4 {
+    font-weight: bolder;
+  }
+  ul {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+    li {
+      line-height: 1.3em;
+      padding: 4px 0;
+      div.assignment {
+        font-size: 1em;
+      }
+      div.date {
+        color: rgb(90, 90, 90);
+        font-size: 0.9em;
+        margin-left: 5px;
+      }
+    }
+  }
+}

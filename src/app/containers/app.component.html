@@ -2,8 +2,8 @@
   <span>Starbase 99</span>
   <span class="spacer"></span>
   <span *ngIf="(character$ | async) !== null">
-    <button mat-button (click)="chooseCharacter()" [disabled]="(amountOfCharacters$ | async) <= 0">
-      {{ (character$ | async).firstName }} {{ (character$ | async).lastName }}
+    <button mat-button (click)="chooseCharacter()" [disabled]="(amountOfCharacters$ | async) <= 1">
+      <mat-icon>account_circle</mat-icon> {{ character$ | async | fullname }}
     </button>
   </span>
   <span>
