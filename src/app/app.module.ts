@@ -9,9 +9,11 @@ import { StoreRouterConnectingModule, RouterState } from '@ngrx/router-store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { UserEffects, RouterEffects } from './modules/core/effects';
 import { AuthModule } from './modules/auth/auth.module';
+import { CharacterModule } from './modules/character/character.module';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
+import { MaterialModule } from './modules/material';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json?build-epoch=${epoch}');
@@ -25,6 +27,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     AppRoutingModule,
     AuthModule,
+    MaterialModule,
+    CharacterModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

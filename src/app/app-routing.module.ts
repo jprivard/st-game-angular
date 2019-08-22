@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppComponent } from './containers/app.component';
 import { AuthGuard } from './modules/auth/guards/auth.guard';
+import { CharacterPageComponent } from './modules/character/containers/character-page.component';
 
 const routes: Routes = [
-  { path: '', component: AppComponent, pathMatch: 'full', canActivate: [AuthGuard] },
+  { path: '', component: CharacterPageComponent, pathMatch: 'full', canActivate: [AuthGuard] },
 ];
 
 @NgModule({

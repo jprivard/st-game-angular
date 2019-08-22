@@ -6,11 +6,26 @@
     "LOGIN": "Connexion",
     "INVALID": "Votre combinaison de courriel et mot de passe ne correspond pas à un compte."
   },
+  "CHARACTER": {
+    "PROFILE": "Profil",
+    "RANK": "Rang",
+    "FIRST_NAME": "Prénom",
+    "LAST_NAME": "Nom de famille",
+    "RACE": "Peuple",
+    "DOB": "Âge",
+    "ASSIGNMENTS": "Assignation(s)"
+  },
   "LIBRARY": {
+    "POSITION": {
+      "CO": "Officier aux commandes"
+    },
     "RACES": {
       "HUMAN": "Humain",
-      "VULCAN": "Vulcain",
-      "KLINGON": "Klingon"
+      "KLINGON": "Klingon",
+      "VULCAN": "Vulcain"
+    },
+    "RANKS": {
+      "RADM": "Rear-Admiral"
     }
   }
 }

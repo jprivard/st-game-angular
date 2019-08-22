@@ -1,0 +1,24 @@
+@import '~@angular/material/theming';
+
+mat-card-title {
+  text-align: center;
+}
+
+.container {
+  line-height: 2em;
+  div {
+    overflow: hidden;
+  }
+  .row {
+    border-bottom: 1px solid #9575CD;
+    .col-md-4 {
+      font-weight: bolder;
+    }
+    ul {
+      padding-left: 0;
+      margin-bottom: 0;
+      list-style-type: none;
+    }
+  }
+
+}

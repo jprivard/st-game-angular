@@ -1,0 +1,11 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+button:focus {
+  outline: none;
+}
+
+.mat-button[disabled][disabled] {
+  color: white;
+}

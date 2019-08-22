@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Store, select } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { AuthActions } from '../modules/auth/actions';
 import * as fromAuth from '../modules/auth/reducers';
+import * as fromCharacter from '../modules/character/reducers';
+import { AuthActions } from '../modules/auth/actions';
 
 @Component({
   selector: 'app-root',
@@ -11,17 +11,22 @@ import * as fromAuth from '../modules/auth/reducers';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'site';
+  amountOfCharacters$ = this.characterStore.pipe(select(fromCharacter.getAmountOfCharaters));
+  character$ = this.characterStore.pipe(select(fromCharacter.getSelectedCharacter));
+  loggedIn$ = this.authStore.pipe(select(fromAuth.getLoggedIn));
   constructor(
     public translate: TranslateService,
-    private store: Store<fromAuth.State>
+    private characterStore: Store<fromCharacter.State>,
+    private authStore: Store<fromAuth.State>
   ) {
     this.translate.setDefaultLang('fr');
   }
 
-  ngOnInit() {}
-
-  logout() {
-    this.store.dispatch(AuthActions.logoutRequest());
+  public ngOnInit() {}
+  public login() {
+    this.authStore.dispatch(AuthActions.loginRedirect());
+  }
+  public logout() {
+    this.authStore.dispatch(AuthActions.logoutRequest());
   }
 }

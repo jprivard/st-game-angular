@@ -17,7 +17,7 @@ export const loginSuccess = createAction('[Auth] Login Success',
   props<{ user: User }>()
 );
 export const loginFail = createAction('[Auth] Login Fail',
-props<{ error: string }>()
+  props<{ error: string }>()
 );
 
 // Logout Sequence
