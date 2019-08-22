@@ -13,11 +13,15 @@
     "LAST_NAME": "Nom de famille",
     "RACE": "Peuple",
     "DOB": "Âge",
-    "ASSIGNMENTS": "Assignation(s)"
+    "ACTIVE_ASSIGNMENTS": "Assignation(s)",
+    "PAST_ASSIGNMENTS": "Passées"
   },
   "LIBRARY": {
     "POSITION": {
-      "CO": "Officier aux commandes"
+      "CSCI": "Officier SCI [chef]",
+      "CO": "Officier aux commandes",
+      "FO": "Premier Officier",
+      "SCI": "Officier SCI"
     },
     "RACES": {
       "HUMAN": "Humain",
@@ -25,6 +29,7 @@
       "VULCAN": "Vulcain"
     },
     "RANKS": {
+      "CDORE": "Commodore",
       "RADM": "Rear-Admiral"
     }
   }

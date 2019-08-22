@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import * as fromAuth from '../modules/auth/reducers';
 import * as fromCharacter from '../modules/character/reducers';
 import { AuthActions } from '../modules/auth/actions';
+import { CharacterActions } from '../modules/character/actions';
 
 @Component({
   selector: 'app-root',
@@ -28,5 +29,8 @@ export class AppComponent implements OnInit {
   }
   public logout() {
     this.authStore.dispatch(AuthActions.logoutRequest());
+  }
+  public chooseCharacter() {
+    this.characterStore.dispatch(CharacterActions.chooseCharacter());
   }
 }

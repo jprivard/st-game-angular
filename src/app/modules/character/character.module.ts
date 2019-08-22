@@ -12,10 +12,12 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CharacterPageComponent } from './containers/character-page.component';
 import { CharacterEffects } from './effects';
 import { CharacterCardComponent } from './components/character-card.component';
+import { CharacterSelectionComponent } from './components/character-selection.component copy';
 
 export const COMPONENTS = [
   CharacterPageComponent,
-  CharacterCardComponent
+  CharacterCardComponent,
+  CharacterSelectionComponent
 ];
 
 @NgModule({
@@ -31,6 +33,8 @@ export const COMPONENTS = [
     EffectsModule.forFeature([CharacterEffects]),
   ],
   declarations: COMPONENTS,
-  entryComponents: [],
+  entryComponents: [
+    CharacterSelectionComponent
+  ],
 })
 export class CharacterModule {}

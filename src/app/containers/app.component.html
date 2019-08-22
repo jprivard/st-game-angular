@@ -2,13 +2,9 @@
   <span>Starbase 99</span>
   <span class="spacer"></span>
   <span *ngIf="(character$ | async) !== null">
-    <button mat-button [disabled]="(amountOfCharacters$ | async) <= 1" [matMenuTriggerFor]="menu">
+    <button mat-button (click)="chooseCharacter()" [disabled]="(amountOfCharacters$ | async) <= 0">
       {{ (character$ | async).firstName }} {{ (character$ | async).lastName }}
     </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>Item 1</button>
-      <button mat-menu-item>Item 2</button>
-    </mat-menu>
   </span>
   <span>
     <button mat-button [matMenuTriggerFor]="menu">

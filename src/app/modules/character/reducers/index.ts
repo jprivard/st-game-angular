@@ -11,6 +11,9 @@ export interface State extends fromRoot.State {
 
 // Export every selectors
 export const selectCharacterState = createFeatureSelector<State, CharacterState>(characterFeatureKey);
+export const getCharacters = createSelector(selectCharacterState,
+  (state: CharacterState) => state.list
+);
 export const getAmountOfCharaters = createSelector(selectCharacterState,
   (state: CharacterState) => state.list.length
 );

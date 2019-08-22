@@ -1,6 +1,8 @@
 export interface Assignment {
   ship: string;
   position: string;
+  start: Date;
+  end: Date;
 }
 
 export interface Character {
@@ -10,5 +12,8 @@ export interface Character {
   lastName: string;
   race: string;
   stardateOfBirth: string;
-  assignments: Assignment[];
+  assignments: {
+    active: Assignment[];
+    past: Assignment[];
+  };
 }
