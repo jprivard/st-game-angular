@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import {
   MatInputModule,
   MatCardModule,
@@ -14,6 +13,7 @@ import {
   MatDialogModule,
   MatSelectModule,
 } from '@angular/material';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -29,6 +29,7 @@ import {
     MatMenuModule,
     MatDialogModule,
     MatSelectModule,
+    NgbModule,
   ],
   exports: [
     MatInputModule,
@@ -43,6 +44,7 @@ import {
     MatMenuModule,
     MatDialogModule,
     MatSelectModule,
+    NgbModule,
   ],
 })
 export class MaterialModule {}

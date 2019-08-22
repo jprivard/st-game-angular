@@ -31,9 +31,9 @@ import { Credentials } from '../models/credentials.model';
             </mat-form-field>
           </p>
 
-          <p *ngIf="errorMessage" class="loginError">
+          <ngb-alert *ngIf="errorMessage" type="danger" [dismissible]="false">
             {{ errorMessage | translate }}
-          </p>
+          </ngb-alert>
 
           <p class="loginButtons">
             <button type="submit" mat-button>{{ 'AUTH.LOGIN' | translate }}</button>
@@ -61,11 +61,8 @@ import { Credentials } from '../models/credentials.model';
         justify-content: center;
       }
 
-      .loginError {
-        padding: 16px;
+      ngb-alert {
         width: 300px;
-        color: white;
-        background-color: red;
       }
 
       .loginButtons {
