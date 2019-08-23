@@ -36,6 +36,16 @@ export const reducer = createReducer(
   on(CharacterActions.selectCharacter, (state, { character }) => ({
     ...state, selected: character
   })),
+  on(CharacterActions.createCharacterRequest, (state, { character }) => ({
+    ...state, process: {
+      ...initialState.process, status: ProcessStatus.Processing
+    }
+  })),
+  on(CharacterActions.createCharacterSuccess, (state, { characters }) => ({
+    ...state, list: state.list.concat(characters), selected: characters[0], process: {
+      ...initialState.process, status: ProcessStatus.Completed
+    }
+  })),
 
   /*on(AuthActions.checkSessionRequest, (state) => ({
     ...state, process: {

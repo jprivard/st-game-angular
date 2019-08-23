@@ -15,10 +15,7 @@ import { CharacterActions } from '../actions';
         </mat-card>
       </div>
       <div class="col-5">
-        <app-character-card
-          *ngIf="(character$ | async) !== null"
-          [character]="character$ | async"
-        ></app-character-card>
+        <app-char-card *ngIf="(character$ | async) !== null" [character]="character$ | async"></app-char-card>
       </div>
     </div>
   </div>`,

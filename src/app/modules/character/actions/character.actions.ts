@@ -15,4 +15,16 @@ export const selectCharacter = createAction('[Character] Select Character',
   props<{ character: Character }>()
 );
 export const chooseCharacter = createAction('[Character] Choose Character');
+
+// Create Character Sequence
 export const createCharacter = createAction('[Character] Create Character');
+export const createCharacterRequest = createAction('[Character] Create Character Request',
+  props<{ character: Character }>()
+);
+export const createCharacterSuccess = createAction('[Character] Create Characters Success',
+  props<{ characters: Character[] }>()
+);
+export const createCharacterFail = createAction('[Character] Create Characters Fail',
+  props<{ error: string }>()
+);
+export const createCharacterCancel = createAction('[Character] Create Character Cancel');

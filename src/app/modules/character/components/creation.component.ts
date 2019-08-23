@@ -64,6 +64,14 @@ export class CreationComponent implements OnInit, OnDestroy {
         this.form.get('rank').disable();
       }
     });
+    this.form.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(val => {
+      this.character = ({ ...val, stardateOfBirth: this.formatDate(val.stardateOfBirth) }) as Character;
+    });
+  }
+
+  formatDate(date: Date) {
+    const result = date ? `${ date.getFullYear() }-${ date.getMonth() + 1 }-${ date.getDate() }` : '';
+    return result;
   }
 
   ngOnDestroy() {

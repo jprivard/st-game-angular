@@ -52,7 +52,20 @@ export class CharacterEffects {
       });
       return dialogRef.afterClosed();
     }),
-    map((character) => character ? CharacterActions.selectCharacter({ character }) : CharacterActions.getCharactersFail({error: ''}))
+    map((character) => {
+      return character ? CharacterActions.createCharacterRequest({ character }) : CharacterActions.createCharacterCancel()
+    })
+  ));
+
+  createCharacterRequest$ = createEffect(() => this.actions$.pipe(
+    ofType(CharacterActions.createCharacterRequest),
+    map(action => action.character),
+    exhaustMap((character) =>
+      this.service.create(character).pipe(
+        map(characters => CharacterActions.createCharacterSuccess({ characters })),
+        catchError(error => of(CharacterActions.createCharacterFail({ error })))
+      )
+    )
   ));
 
   constructor(

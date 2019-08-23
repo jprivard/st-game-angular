@@ -11,7 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule } from '@ngx-translate/core';
 import { CharacterPageComponent } from './containers/character-page.component';
 import { CharacterEffects } from './effects';
-import { CharacterCardComponent } from './components/character-card.component';
+import { CardComponent } from './components/card.component';
 import { SelectionComponent } from './components/selection.component';
 import { AssignmentPipe, FullnamePipe } from './pipes/assignment.pipe';
 import { AssignmentComponent } from './components/assignment.component';
@@ -21,7 +21,7 @@ import { CoreModule } from '../core/core.module';
 
 export const COMPONENTS = [
   CharacterPageComponent,
-  CharacterCardComponent,
+  CardComponent,
   AssignmentComponent,
   SelectionComponent,
   CreationComponent,
