@@ -7,7 +7,8 @@ import { catchError, exhaustMap, map } from 'rxjs/operators';
 import { CharacterActions } from '../actions';
 import { CharacterService } from '../services';
 import { Character } from '../models/character.model';
-import { CharacterSelectionComponent } from '../components/character-selection.component';
+import { SelectionComponent } from '../components/selection.component';
+import { CreationComponent } from '../components/creation.component';
 
 @Injectable()
 export class CharacterEffects {
@@ -28,14 +29,27 @@ export class CharacterEffects {
     map((characters: Character[]) => {
       if (characters.length > 1) { return CharacterActions.chooseCharacter(); }
       if (characters.length === 1) { return CharacterActions.selectCharacter({ character: characters[0] }); }
-      return CharacterActions.createFirstCharacter();
+      return CharacterActions.createCharacter();
     })
   ));
 
   chooseCharacter$ = createEffect(() => this.actions$.pipe(
     ofType(CharacterActions.chooseCharacter),
     exhaustMap(() => {
-      const dialogRef = this.dialog.open<CharacterSelectionComponent, undefined, Character>(CharacterSelectionComponent);
+      const dialogRef = this.dialog.open<SelectionComponent, undefined, Character>(SelectionComponent, {
+        width: '600px',
+      });
+      return dialogRef.afterClosed();
+    }),
+    map((character) => character ? CharacterActions.selectCharacter({ character }) : CharacterActions.getCharactersFail({error: ''}))
+  ));
+
+  createCharacter$ = createEffect(() => this.actions$.pipe(
+    ofType(CharacterActions.createCharacter),
+    exhaustMap(() => {
+      const dialogRef = this.dialog.open<CreationComponent, undefined, Character>(CreationComponent, {
+        width: '600px',
+      });
       return dialogRef.afterClosed();
     }),
     map((character) => character ? CharacterActions.selectCharacter({ character }) : CharacterActions.getCharactersFail({error: ''}))

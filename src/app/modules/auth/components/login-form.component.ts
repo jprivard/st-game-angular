@@ -36,7 +36,7 @@ import { Credentials } from '../models/credentials.model';
           </ngb-alert>
 
           <p class="loginButtons">
-            <button type="submit" mat-button>{{ 'AUTH.LOGIN' | translate }}</button>
+            <button type="submit" mat-flat-button color="primary" mat-button>{{ 'AUTH.LOGIN' | translate }}</button>
           </p>
         </form>
       </mat-card-content>
@@ -66,6 +66,7 @@ import { Credentials } from '../models/credentials.model';
       }
 
       .loginButtons {
+        float: right;
         display: flex;
         flex-direction: row;
         justify-content: flex-end;

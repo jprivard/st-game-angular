@@ -15,4 +15,4 @@ export const selectCharacter = createAction('[Character] Select Character',
   props<{ character: Character }>()
 );
 export const chooseCharacter = createAction('[Character] Choose Character');
-export const createFirstCharacter = createAction('[Character] Create First Character');
+export const createCharacter = createAction('[Character] Create Character');

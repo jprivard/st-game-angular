@@ -12,16 +12,18 @@ import { TranslateModule } from '@ngx-translate/core';
 import { CharacterPageComponent } from './containers/character-page.component';
 import { CharacterEffects } from './effects';
 import { CharacterCardComponent } from './components/character-card.component';
-import { CharacterSelectionComponent } from './components/character-selection.component';
+import { SelectionComponent } from './components/selection.component';
 import { AssignmentPipe, FullnamePipe } from './pipes/assignment.pipe';
 import { AssignmentComponent } from './components/assignment.component';
 import { RowComponent } from './components/row.component';
+import { CreationComponent } from './components/creation.component';
 
 export const COMPONENTS = [
   CharacterPageComponent,
   CharacterCardComponent,
   AssignmentComponent,
-  CharacterSelectionComponent,
+  SelectionComponent,
+  CreationComponent,
   RowComponent,
 ];
 
@@ -44,7 +46,8 @@ export const PIPES = [
   ],
   declarations: [COMPONENTS, PIPES],
   entryComponents: [
-    CharacterSelectionComponent
+    SelectionComponent,
+    CreationComponent,
   ],
   exports: [PIPES]
 })

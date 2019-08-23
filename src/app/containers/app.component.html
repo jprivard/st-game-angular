@@ -1,19 +1,15 @@
 <mat-toolbar color="primary">
   <span>Starbase 99</span>
   <span class="spacer"></span>
-  <span *ngIf="(character$ | async) !== null">
-    <button mat-button (click)="chooseCharacter()" [disabled]="(amountOfCharacters$ | async) <= 1">
-      <mat-icon>account_circle</mat-icon> {{ character$ | async | fullname }}
-    </button>
-  </span>
-  <span>
-    <button mat-button [matMenuTriggerFor]="menu">
-      <mat-icon>settings</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button *ngIf="(loggedIn$ | async)" mat-menu-item (click)="logout()">Déconnexion</button>
-      <button *ngIf="!(loggedIn$ | async)" mat-menu-item (click)="login()">Connexion</button>
-    </mat-menu>
-  </span>
+  <button mat-button [matMenuTriggerFor]="menu">
+    <span *ngIf="(loggedIn$ | async) && (character$ | async) !== null">{{ (character$ | async) | fullname }}</span>
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button *ngIf="(amountOfCharacters$ | async) > 0" mat-menu-item (click)="chooseCharacter()">Choisir un autre personnage</button>
+    <button *ngIf="(loggedIn$ | async) && (isAdmin$ | async)" mat-menu-item (click)="createCharacter()">Créer un nouveau personnage</button>
+    <button *ngIf="(loggedIn$ | async)" mat-menu-item (click)="logout()">Déconnexion</button>
+    <button *ngIf="!(loggedIn$ | async)" mat-menu-item (click)="login()">Connexion</button>
+  </mat-menu>
 </mat-toolbar>
 <router-outlet></router-outlet>

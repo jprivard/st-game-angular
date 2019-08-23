@@ -15,7 +15,7 @@ export const getCharacters = createSelector(selectCharacterState,
   (state: CharacterState) => state.list
 );
 export const getAmountOfCharaters = createSelector(selectCharacterState,
-  (state: CharacterState) => state.list.length
+  (state: CharacterState) => state.list !== null ? state.list.length : 0
 );
 export const getSelectedCharacter = createSelector(selectCharacterState,
   (state: CharacterState) => state.selected

@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   amountOfCharacters$ = this.characterStore.pipe(select(fromCharacter.getAmountOfCharaters));
   character$ = this.characterStore.pipe(select(fromCharacter.getSelectedCharacter));
   loggedIn$ = this.authStore.pipe(select(fromAuth.getLoggedIn));
+  isAdmin$ = this.authStore.pipe(select(fromAuth.getIsAdmin));
   constructor(
     public translate: TranslateService,
     private characterStore: Store<fromCharacter.State>,
@@ -32,5 +33,8 @@ export class AppComponent implements OnInit {
   }
   public chooseCharacter() {
     this.characterStore.dispatch(CharacterActions.chooseCharacter());
+  }
+  public createCharacter() {
+    this.characterStore.dispatch(CharacterActions.createCharacter());
   }
 }

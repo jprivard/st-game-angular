@@ -18,7 +18,10 @@
     "SINCE": "Depuis {{ start }}",
     "FROM_TO": "De {{ start }} à {{ end }}",
     "ACTIVE_LIST": "Liste des personnages actifs",
-    "CHOOSE": "Choisir ce personnage"
+    "SELECT": "Sélection d'un personnage",
+    "CREATE_CHARACTER": "Création d'un personnage",
+    "SUBMIT": "Soumettre",
+    "CANCEL": "Annuler"
   },
   "LIBRARY": {
     "POSITION": {

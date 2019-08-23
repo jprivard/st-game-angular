@@ -19,6 +19,7 @@ export const getIsAuth = createSelector(selectAuthState, (state: AuthState) => {
     return !!state.user;
   }
 });
+export const getIsAdmin = createSelector(getUser, user => user !== null ? user.type === 'admin' : false);
 export const getError = createSelector(selectAuthState, (state: AuthState) => state.process.error);
 export const getIsPending = createSelector(selectAuthState, (state: AuthState) => {
   return state.process.status === ProcessStatus.Processing;
