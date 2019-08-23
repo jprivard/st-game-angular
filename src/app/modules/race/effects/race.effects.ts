@@ -1,22 +1,23 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
-import { Actions } from '@ngrx/effects';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { RaceService } from '../services';
+import { RaceActions } from '../actions';
+import { exhaustMap, catchError, map } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Injectable()
 export class RaceEffects {
-  /*
   list$ = createEffect(() => this.actions$.pipe(
-    ofType(CharacterActions.getCharactersRequest),
+    ofType(RaceActions.getRacesRequest),
     exhaustMap(() =>
       this.service.list().pipe(
-        map(characters => CharacterActions.getCharactersSuccess({ characters })),
-        catchError(error => of(CharacterActions.getCharactersFail({ error })))
+        map(races => RaceActions.getRacesSuccess({ races })),
+        catchError(error => of(RaceActions.getRacesFail({ error })))
       )
     )
   ));
-  */
 
   constructor(
     private actions$: Actions,

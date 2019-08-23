@@ -21,9 +21,14 @@ export const initialState: RaceState = {
 
 export const reducer = createReducer(
   initialState,
-  /*on(AuthActions.checkSessionRequest, (state) => ({
+  on(RaceActions.getRacesRequest, (state) => ({
     ...state, process: {
       ...initialState.process, status: ProcessStatus.Processing
-    }})
-  )*/
+    }
+  })),
+  on(RaceActions.getRacesSuccess, (state, { races }) => ({
+    ...initialState, list: races, process : {
+      ...initialState.process, status: ProcessStatus.Completed
+    }
+  })),
 );
