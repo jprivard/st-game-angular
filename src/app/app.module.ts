@@ -16,6 +16,7 @@ import { HttpClient } from '@angular/common/http';
 import { MaterialModule } from './modules/material';
 import { MAT_DATE_LOCALE } from '@angular/material';
 import { RaceModule } from './modules/race/race.module';
+import { RankModule } from './modules/rank/rank.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json?build-epoch=${epoch}');
@@ -28,6 +29,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     CharacterModule,
     RaceModule,
+    RankModule,
     BrowserModule,
     AppRoutingModule,
     AuthModule,

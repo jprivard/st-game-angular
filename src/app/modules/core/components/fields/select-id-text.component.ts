@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FieldComponent } from './field.component';
 
 @Component({
@@ -6,7 +6,7 @@ import { FieldComponent } from './field.component';
   template: `
   <mat-form-field [formGroup]="form">
     <mat-label>{{ text | translate }}</mat-label>
-    <mat-select [formControlName]="name">
+    <mat-select [formControlName]="name" [(value)]="selected">
       <mat-option *ngFor="let item of items" [value]="item.id">
         {{ item.text | translate }}
       </mat-option>
@@ -15,6 +15,10 @@ import { FieldComponent } from './field.component';
   `,
   styleUrls: ['./field.component.css'],
 })
-export class SelectIdTextComponent extends FieldComponent {
+export class SelectIdTextComponent extends FieldComponent implements OnInit {
   @Input() items;
+  public selected: number;
+  ngOnInit() {
+    this.selected = this.form.get(this.name).value;
+  }
 }

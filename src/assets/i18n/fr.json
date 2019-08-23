@@ -36,8 +36,19 @@
       "VULCAN": "Vulcain"
     },
     "RANKS": {
+      "CDT": "Cadet",
+      "ENS": "Enseigne",
+      "LTJG": "Sous-Lieutenant",
+      "LT": "Lieutenant",
+      "LTCMDR": "Lieutenant commandant",
+      "CMDR": "Commandant",
+      "CPT": "Capitaine",
+      "FCPT": "Capitaine de flotte",
       "CDORE": "Commodore",
-      "RADM": "Rear-Admiral"
+      "RADM": "Contre amiral",
+      "VADM": "Vice amiral",
+      "ADM": "Amiral",
+      "FADM": "Amiral de flotte"
     }
   },
   "VALIDATIONS": {
