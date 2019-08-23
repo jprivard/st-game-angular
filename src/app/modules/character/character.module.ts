@@ -17,6 +17,7 @@ import { AssignmentPipe, FullnamePipe } from './pipes/assignment.pipe';
 import { AssignmentComponent } from './components/assignment.component';
 import { RowComponent } from './components/row.component';
 import { CreationComponent } from './components/creation.component';
+import { CoreModule } from '../core/core.module';
 
 export const COMPONENTS = [
   CharacterPageComponent,
@@ -34,6 +35,7 @@ export const PIPES = [
 
 @NgModule({
   imports: [
+    CoreModule,
     CommonModule,
     ReactiveFormsModule,
     MaterialModule,

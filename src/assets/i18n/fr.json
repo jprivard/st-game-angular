@@ -12,7 +12,7 @@
     "FIRST_NAME": "Prénom",
     "LAST_NAME": "Nom de famille",
     "RACE": "Peuple",
-    "DOB": "Âge",
+    "DOB": "Naissance",
     "ACTIVE_ASSIGNMENTS": "Assignation(s)",
     "PAST_ASSIGNMENTS": "Passées",
     "SINCE": "Depuis {{ start }}",
@@ -38,6 +38,12 @@
     "RANKS": {
       "CDORE": "Commodore",
       "RADM": "Rear-Admiral"
+    }
+  },
+  "VALIDATIONS": {
+    "ERROR": {
+      "REQUIRED": "Le champ '{{ field }}' est requis.",
+      "MATDATEPICKERPARSE": "Ce que vous avez entré n'est pas un format de date valide."
     }
   }
 }

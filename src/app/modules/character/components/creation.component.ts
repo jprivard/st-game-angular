@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import * as fromCharacter from '../reducers';
 import { Character } from '../models/character.model';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-char-creation',
@@ -10,17 +10,9 @@ import { FormGroup, FormControl } from '@angular/forms';
     <h2 mat-dialog-title>{{ 'CHARACTER.CREATE_CHARACTER' | translate }}</h2>
     <mat-dialog-content>
       <form [formGroup]="form">
-        <mat-form-field>
-          <input type="text" matInput formControlName="firstName" placeholder="{{ 'CHARACTER.FIRST_NAME' | translate }}"/>
-        </mat-form-field>
-        <mat-form-field>
-          <input type="text" matInput formControlName="lastName" placeholder="{{ 'CHARACTER.LAST_NAME' | translate }}"/>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput formControlName="stardateOfBirth" [matDatepicker]="picker" placeholder="{{ 'CHARACTER.DOB' | translate }}">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker startAt="2400-01-02"></mat-datepicker>
-        </mat-form-field>
+        <app-form-input [form]="form" name="firstName" text="CHARACTER.FIRST_NAME"></app-form-input>
+        <app-form-input [form]="form" name="lastName" text="CHARACTER.LAST_NAME"></app-form-input>
+        <app-form-date [form]="form" name="stardateOfBirth" text="CHARACTER.DOB"></app-form-date>
       </form>
     </mat-dialog-content>
     <mat-dialog-actions>
@@ -33,15 +25,15 @@ import { FormGroup, FormControl } from '@angular/forms';
     </mat-dialog-actions>
   `,
   styles: [`
+  mat-form-field {
+    margin-bottom: 10px;
+  }
   mat-dialog-actions {
     float: right;
   }
   form {
     display: flex;
     flex-direction: column;
-  }
-  form > * {
-    width: 100%;
   }
   `],
 })
@@ -51,9 +43,12 @@ export class CreationComponent implements OnInit {
   constructor(private store: Store<fromCharacter.State>) {}
   ngOnInit() {
     this.form = new FormGroup({
-      firstName: new FormControl(),
-      lastName: new FormControl(),
-      stardateOfBirth: new FormControl(),
+      firstName: new FormControl('', [ Validators.required ]),
+      lastName: new FormControl('', [ Validators.required ]),
+      stardateOfBirth: new FormControl('', [ Validators.required ]),
     });
+  }
+  errorsOf(field: string) {
+    return Object.keys(this.form.get(field).errors);
   }
 }
