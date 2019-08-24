@@ -1,5 +1,7 @@
+@import "../../../variables";
+
 .row {
-  border-bottom: 1px solid #9575CD;
+  border-bottom: 1px solid $separator-color;
   .col-md-4 {
     font-weight: bolder;
   }

@@ -5,7 +5,7 @@ import { Character } from '../models/character.model';
   selector: 'app-char-card',
   template: `
     <mat-card>
-      <mat-card-title>{{ character | fullname }}</mat-card-title>
+      <mat-card-title><div>{{ character | fullname }}</div></mat-card-title>
       <mat-card-content>
         <div class="container">
           <app-char-row title="CHARACTER.RANK" [data]="character.rank | translate"></app-char-row>

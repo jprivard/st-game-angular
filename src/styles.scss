@@ -3,9 +3,40 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import '~bootstrap/scss/bootstrap-reboot';
 @import '~bootstrap/scss/bootstrap-grid';
+@import url('https://fonts.googleapis.com/css?family=Oswald&display=swap');
 
 body {
   background-image: url("./assets/images/starfield.png");
   background-repeat: repeat;
   background-color: #000000;
+}
+
+mat-card.mat-card {
+  font-family: 'Oswald', sans-serif;
+  border: 10px solid blue;
+  border-image: url("./assets/images/card.png");
+  border-image-slice: 10 10 10 10;
+  background: #000000;
+  color: white;
+  padding-bottom: 0;
+}
+
+mat-card-title {
+  position: relative;
+  top: -25px;
+  height: 70px;
+  width: calc(100% + 50px);
+  left: -25px;
+  background: url("./assets/images/card-header-left.png") top left no-repeat,
+              url("./assets/images/card-header-right.png") top right no-repeat,
+              url("./assets/images/card-header-middle.png") top repeat;
+  div {
+    position: relative;
+    top: 10px;
+  }
+}
+
+mat-card-content {
+  position: relative;
+  top: -25px;
 }
