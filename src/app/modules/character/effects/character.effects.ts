@@ -60,7 +60,10 @@ export class CharacterEffects {
       });
       return dialogRef.afterClosed();
     }),
-    map((character) => character ? CharacterActions.selectCharacter({ character }) : CharacterActions.getCharactersFail({error: ''}))
+    map((character: Character | string) => character && character !== 'false' ?
+      CharacterActions.selectCharacter({ character: character as Character }) :
+      CharacterActions.selectCharacterCancel()
+    )
   ));
 
   createCharacter$ = createEffect(() => this.actions$.pipe(
@@ -71,9 +74,7 @@ export class CharacterEffects {
       });
       return dialogRef.afterClosed();
     }),
-    map((character) => {
-      return character ? CharacterActions.createCharacterRequest({ character }) : CharacterActions.createCharacterCancel()
-    })
+    map((character) => character ? CharacterActions.createCharacterRequest({ character }) : CharacterActions.createCharacterCancel())
   ));
 
   createCharacterRequest$ = createEffect(() => this.actions$.pipe(

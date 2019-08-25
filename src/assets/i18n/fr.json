@@ -53,7 +53,9 @@
     }
   },
   "MISSION": {
-    "LOGS": "Mission Logs"
+    "LOGS": "Mission Logs",
+    "PARTICIPATE": "Continuer l'histoire",
+    "READ": "Lire l'archive"
   },
   "VALIDATIONS": {
     "ERROR": {

@@ -23,6 +23,7 @@ export const selectCharacterSuccess = createAction('[Character] Select Character
 export const selectCharacterFail = createAction('[Character] Select Characters Fail',
   props<{ error: string }>()
 );
+export const selectCharacterCancel = createAction('[Character] Select Character Cancel');
 
 // Create Character Sequence
 export const createCharacter = createAction('[Character] Create Character');

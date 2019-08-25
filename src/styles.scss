@@ -27,7 +27,7 @@ mat-dialog-container.mat-dialog-container {
 
 mat-card.mat-card {
   $self: &;
-  font-family: 'Oswald', sans-serif;
+  font-family: 'Oswald', sans-serif !important;
   border: 10px solid blue;
   border-image: url("./assets/images/card.png");
   border-image-slice: 10 10 10 10;
@@ -92,7 +92,9 @@ mat-card.mat-card {
   mat-card-content {
     color: white;
     position: relative;
-    top: -27px;
+    top: -15px;
+    font-size: 17px;
+    margin-bottom: 0 !important;
   }
 
   mat-card-actions.mat-card-actions {
@@ -113,8 +115,6 @@ mat-focused .mat-form-field-label {
 }
 
 mat-form-field, mat-form-field.mat-form-field-appearance-legacy {
-  font-family: 'Oswald', sans-serif;
-  font-size: 1.2em;
   width: 100%;
   .mat-select {
     font-family: 'Oswald', sans-serif;

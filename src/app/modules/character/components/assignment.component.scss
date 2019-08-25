@@ -4,6 +4,7 @@
   border-bottom: 1px solid $separator-color;
   .col-md-4 {
     font-weight: bolder;
+    font-size: 14px;
     color: $lcars_orange;
   }
   ul {
@@ -13,12 +14,9 @@
     li {
       line-height: 1.3em;
       padding: 4px 0;
-      div.assignment {
-        font-size: 1em;
-      }
       div.date {
         color: #9b9b9b;
-        font-size: 0.9em;
+        font-size: 14px;
         margin-left: 5px;
       }
     }

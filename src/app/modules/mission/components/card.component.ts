@@ -7,16 +7,16 @@ import { Mission } from '../models/mission.model';
   <mat-card [ngClass]="{ orange: mission.active, grey: !mission.active }">
     <mat-card-title><span>{{ mission.name }}</span></mat-card-title>
     <mat-card-content>
-      <p>{{ mission.description }}</p>
+      {{ mission.description }}
     </mat-card-content>
+    <mat-card-actions>
+      <button mat-button mat-flat-button color="primary">
+        {{ (mission.active ? 'MISSION.PARTICIPATE' : 'MISSION.READ') | translate }}
+      </button>
+    </mat-card-actions>
   </mat-card>
   `,
-  styles: [`
-  p {
-    margin-top: 15px !important;
-    font-size: 1.3em;
-  }
-  `],
+  styles: [``],
 })
 export class CardComponent implements OnInit {
   @Input() mission: Mission;
