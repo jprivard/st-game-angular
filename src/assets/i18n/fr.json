@@ -19,6 +19,7 @@
     "FROM_TO": "De {{ start }} à {{ end }}",
     "ACTIVE_LIST": "Liste des personnages actifs",
     "SELECT": "Sélection d'un personnage",
+    "SELECT_EXPLANATIONS": "Vous avez plus d'un joueur associé à votre compte. Choisissez avec lequel vous désirez effectuer vos intéractions.",
     "CREATE_CHARACTER": "Création d'un personnage",
     "SUBMIT": "Soumettre",
     "CANCEL": "Annuler"

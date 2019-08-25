@@ -13,8 +13,9 @@ import { Subject } from 'rxjs';
 @Component({
   selector: 'app-char-creation',
   template: `
-    <h2 mat-dialog-title>{{ 'CHARACTER.CREATE_CHARACTER' | translate }}</h2>
-    <mat-dialog-content>
+  <mat-card>
+    <mat-card-title><span>{{ 'CHARACTER.CREATE_CHARACTER' | translate | uppercase }}</span></mat-card-title>
+    <mat-card-content>
       <form [formGroup]="form">
         <app-form-input [form]="form" name="firstName" text="CHARACTER.FIRST_NAME"></app-form-input>
         <app-form-input [form]="form" name="lastName" text="CHARACTER.LAST_NAME"></app-form-input>
@@ -22,8 +23,9 @@ import { Subject } from 'rxjs';
         <app-form-select-id-text *ngIf="(races$ | async) !== null" [form]="form" name="race" text="CHARACTER.RACE" [items]="(races$ | async)"></app-form-select-id-text>
         <app-form-select-id-text *ngIf="(ranks$ | async) !== null" [form]="form" name="rank" text="CHARACTER.RANK" [items]="(ranks$ | async)"></app-form-select-id-text>
       </form>
-    </mat-dialog-content>
+    </mat-card-content>
     <app-form-cancel-submit [form]="form" cancel="false" [submit]="character"></app-form-cancel-submit>
+  </mat-card>
   `,
   styles: [`
   mat-form-field {

@@ -6,29 +6,32 @@ import { Character } from '../models/character.model';
 @Component({
   selector: 'app-char-selection',
   template: `
-  <h2>{{ 'CHARACTER.SELECT' | translate }}</h2>
-  <mat-dialog-content>
-    <mat-form-field>
-      <mat-label>{{ 'CHARACTER.ACTIVE_LIST' | translate }}</mat-label>
-      <mat-select [(value)]="selected">
-        <mat-option *ngFor="let character of characters$ | async" [value]="character">
-          {{ character | fullname }}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </mat-dialog-content>
-  <mat-dialog-actions>
-    <button mat-button mat-stroked-button mat-dialog-close="false">
-      {{ 'CHARACTER.CANCEL' | translate }}
-    </button>
-    <button mat-button mat-flat-button color="primary" [disabled]="selected === null" [mat-dialog-close]="selected">
-      {{ 'CHARACTER.SUBMIT' | translate }}
-    </button>
-  </mat-dialog-actions>
+  <mat-card>
+    <mat-card-title><span>{{ 'CHARACTER.SELECT' | translate | uppercase }}</span></mat-card-title>
+    <mat-card-content>
+      <p>{{ "CHARACTER.SELECT_EXPLANATIONS" | translate }}</p>
+      <mat-form-field>
+        <mat-label>{{ 'CHARACTER.ACTIVE_LIST' | translate }}</mat-label>
+        <mat-select [(value)]="selected">
+          <mat-option *ngFor="let character of characters$ | async" [value]="character">
+            {{ character | fullname }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button mat-stroked-button mat-dialog-close="false">
+        {{ 'CHARACTER.CANCEL' | translate }}
+      </button>
+      <button mat-button mat-flat-button color="primary" [disabled]="selected === null" [mat-dialog-close]="selected">
+        {{ 'CHARACTER.SUBMIT' | translate }}
+      </button>
+    </mat-card-actions>
+  </mat-card>
   `,
   styles: [`
-  mat-dialog-actions {
-    float: right;
+  p {
+    margin-top: 30px !important;
   }
   `],
 })

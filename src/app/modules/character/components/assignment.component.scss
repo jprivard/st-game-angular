@@ -4,6 +4,7 @@
   border-bottom: 1px solid $separator-color;
   .col-md-4 {
     font-weight: bolder;
+    color: $lcars_orange;
   }
   ul {
     padding-left: 0;
@@ -16,7 +17,7 @@
         font-size: 1em;
       }
       div.date {
-        color: rgb(90, 90, 90);
+        color: rgb(120, 120, 120);
         font-size: 0.9em;
         margin-left: 5px;
       }
