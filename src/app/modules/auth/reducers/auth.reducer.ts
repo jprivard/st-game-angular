@@ -51,5 +51,12 @@ export const reducer = createReducer(
       ...initialState.process, status: ProcessStatus.Processing
     }})
   ),
+  on(AuthActions.updateSelectedCharacter, (state, { user }) => {
+    if ( state.user.selectedCharacter === user.selectedCharacter ) { return state; }
+    return {
+      ...state, user: {
+        ... state.user, selectedCharacter: user.selectedCharacter
+      }};
+  }),
   on(AuthActions.logoutSuccess, (state) => ({ ...initialState }))
 );

@@ -52,6 +52,9 @@
       "FADM": "Amiral de flotte"
     }
   },
+  "MISSION": {
+    "LOGS": "Mission Logs"
+  },
   "VALIDATIONS": {
     "ERROR": {
       "REQUIRED": "Le champ '{{ field }}' est requis.",

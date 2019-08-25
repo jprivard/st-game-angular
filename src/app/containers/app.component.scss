@@ -13,3 +13,19 @@ button:focus {
 mat-icon {
   margin-left: 5px;
 }
+
+.logo {
+  display: block;
+  background-color: white;
+  width: 60px;
+  height: 60px;
+  -webkit-mask-image: url('../../assets/images/starfleet.svg');
+  mask-image: url('../../assets/images/starfleet.svg');
+}
+
+#lcars {
+  font-family: 'Oswald', sans-serif;
+  .title {
+    font-size: 2em;
+  }
+}

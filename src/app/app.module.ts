@@ -17,6 +17,9 @@ import { MaterialModule } from './modules/material';
 import { MAT_DATE_LOCALE } from '@angular/material';
 import { RaceModule } from './modules/race/race.module';
 import { RankModule } from './modules/rank/rank.module';
+import { DashboardComponent } from './containers/dashboard.component';
+import { CardComponent } from './modules/character/components/card.component';
+import { MissionModule } from './modules/mission/mission.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json?build-epoch=${epoch}');
@@ -24,12 +27,13 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, DashboardComponent
   ],
   imports: [
     CharacterModule,
     RaceModule,
     RankModule,
+    MissionModule,
     BrowserModule,
     AppRoutingModule,
     AuthModule,

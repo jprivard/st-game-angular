@@ -9,7 +9,6 @@ import { CharacterRoutingModule } from './auth-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule } from '@ngx-translate/core';
-import { CharacterPageComponent } from './containers/character-page.component';
 import { CharacterEffects } from './effects';
 import { CardComponent } from './components/card.component';
 import { SelectionComponent } from './components/selection.component';
@@ -20,7 +19,6 @@ import { CreationComponent } from './components/creation.component';
 import { CoreModule } from '../core/core.module';
 
 export const COMPONENTS = [
-  CharacterPageComponent,
   CardComponent,
   AssignmentComponent,
   SelectionComponent,
@@ -51,6 +49,6 @@ export const PIPES = [
     SelectionComponent,
     CreationComponent,
   ],
-  exports: [PIPES]
+  exports: [COMPONENTS, PIPES]
 })
 export class CharacterModule {}

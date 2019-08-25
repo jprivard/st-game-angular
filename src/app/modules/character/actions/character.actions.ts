@@ -1,20 +1,28 @@
 import { createAction, props } from '@ngrx/store';
 import { Character } from '../models/character.model';
+import { User } from '../../auth/models/user.model';
 
 // Get Characters sequence
-export const getCharactersRequest = createAction('[Character] Get Characters Request');
+export const getCharactersRequest = createAction('[Character] Get Characters Request',
+props<{ lastSelected: number }>()
+);
 export const getCharactersSuccess = createAction('[Character] Get Characters Success',
-  props<{ characters: Character[] }>()
+  props<{ characters: Character[], lastSelected: number }>()
 );
 export const getCharactersFail = createAction('[Character] Get Characters Fail',
   props<{ error: string }>()
 );
 
-// These actions are sent when we retrieve the character list
+// Select Character sequence
 export const selectCharacter = createAction('[Character] Select Character',
   props<{ character: Character }>()
 );
-export const chooseCharacter = createAction('[Character] Choose Character');
+export const selectCharacterSuccess = createAction('[Character] Select Character Success',
+  props<{ user: User }>()
+);
+export const selectCharacterFail = createAction('[Character] Select Characters Fail',
+  props<{ error: string }>()
+);
 
 // Create Character Sequence
 export const createCharacter = createAction('[Character] Create Character');
@@ -28,3 +36,6 @@ export const createCharacterFail = createAction('[Character] Create Characters F
   props<{ error: string }>()
 );
 export const createCharacterCancel = createAction('[Character] Create Character Cancel');
+
+// Others
+export const chooseCharacter = createAction('[Character] Choose Character');

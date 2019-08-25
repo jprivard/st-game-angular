@@ -24,12 +24,12 @@ export const initialState: CharacterState = {
 export const reducer = createReducer(
   initialState,
   on(CharacterActions.getCharactersRequest, (state) => ({
-    ...initialState, process: {
+    ...state, process: {
       ...initialState.process, status: ProcessStatus.Processing
     }
   })),
   on(CharacterActions.getCharactersSuccess, (state, { characters }) => ({
-    ...initialState, list: characters, process : {
+    ...state, list: characters, process : {
       ...initialState.process, status: ProcessStatus.Completed
     }
   })),

@@ -16,12 +16,17 @@ div.cdk-overlay-dark-backdrop {
   background: rgba(0,0,0,0.50);
 }
 
+mat-dialog-container mat-card.mat-card {
+  margin-bottom: 0;
+}
+
 mat-dialog-container.mat-dialog-container {
   padding: 0px;
   border-radius: 10px;
 }
 
 mat-card.mat-card {
+  $self: &;
   font-family: 'Oswald', sans-serif;
   border: 10px solid blue;
   border-image: url("./assets/images/card.png");
@@ -29,7 +34,38 @@ mat-card.mat-card {
   background: #000000;
   color: white;
   padding-bottom: 0;
+  margin-bottom: 20px;
 
+  &.orange, &.grey {
+    mat-card-title {
+      text-align: left;
+      height: 26px;
+      span {
+        top: -10px;
+        height: 25px;
+        margin-left: 25px;
+        font-size: 20px;
+      }
+    }
+  }
+  &.orange {
+    border-image: url("./assets/images/card-orange.png");
+    border-image-slice: 10 10 10 10;
+    mat-card-title {
+      background: url("./assets/images/card-header-left-orange.png") top left no-repeat,
+      url("./assets/images/card-header-right-orange.png") top right no-repeat,
+      url("./assets/images/card-header-middle-orange.png") top repeat;
+    }
+  }
+  &.grey {
+    border-image: url("./assets/images/card-grey.png");
+    border-image-slice: 10 10 10 10;
+    mat-card-title {
+      background: url("./assets/images/card-header-left-grey.png") top left no-repeat,
+      url("./assets/images/card-header-right-grey.png") top right no-repeat,
+      url("./assets/images/card-header-middle-grey.png") top repeat;
+    }
+  }
   mat-card-title {
     text-align: center;
     position: relative;
