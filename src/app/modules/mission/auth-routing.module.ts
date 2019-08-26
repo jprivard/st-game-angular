@@ -5,7 +5,7 @@ import { AuthGuard } from '../auth/guards/auth.guard';
 import { CanReadGuard } from './guards/mission.guard';
 
 const routes: Routes = [{
-  path: 'mission/:id', canActivate: [AuthGuard], children: [{
+  path: 'mission/:id', canActivate: [], children: [{
     path: '', canActivate: [CanReadGuard], component: PageComponent
   }]
 }];

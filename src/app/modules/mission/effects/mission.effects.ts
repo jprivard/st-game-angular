@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { MissionService } from '../services';
 import { MissionActions } from '../actions';
-import { exhaustMap, catchError, map } from 'rxjs/operators';
+import { exhaustMap, catchError, map, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Injectable({
@@ -20,6 +20,14 @@ export class MissionEffects {
       )
     )
   ));
+
+  $missionPage = createEffect(() => this.actions$.pipe(
+    ofType(MissionActions.redirectMissionPage),
+    map(action => action.id),
+    tap(id => {
+      this.router.navigate([`/mission/${ id }/`]);
+    })
+  ), { dispatch: false });
 
   constructor(
     private actions$: Actions,

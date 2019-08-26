@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Mission } from '../models/mission.model';
+import { Store } from '@ngrx/store';
+import * as fromMission from '../reducers';
+import { MissionActions } from '../actions';
 
 @Component({
   selector: 'app-mission-card',
@@ -12,7 +15,7 @@ import { Mission } from '../models/mission.model';
     <mat-card-actions>
       <span> {{ 'MISSION.PARTICIPANTS' | translate: { number: mission.participants.length } }} </span>
       <button mat-button mat-flat-button color="primary" [matBadgeHidden]="mission.unreadMessages === 0"
-        [matBadge]="mission.unreadMessages" matBadgeColor="warn" >
+        [matBadge]="mission.unreadMessages" matBadgeColor="warn" (click)="goToMission(mission.id)">
         {{ (mission.active ? 'MISSION.PARTICIPATE' : 'MISSION.READ') | translate }}
       </button>
     </mat-card-actions>
@@ -22,6 +25,10 @@ import { Mission } from '../models/mission.model';
 })
 export class CardComponent implements OnInit {
   @Input() mission: Mission;
-  constructor() {}
+  constructor(private store: Store<fromMission.State>) {}
   ngOnInit() {}
+  goToMission(id: number) {
+    console.log('lol?');
+    this.store.dispatch(MissionActions.redirectMissionPage({ id }));
+  }
 }

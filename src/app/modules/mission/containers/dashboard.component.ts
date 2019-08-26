@@ -28,12 +28,16 @@ export class DashboardComponent implements OnDestroy {
   character$ = this.characterStore.pipe(select(fromCharacter.getSelectedCharacter));
   missions$ = this.missionStore.pipe(select(fromMission.getMissions));
   onDestroy$ = new Subject();
+  characterId = 0;
   constructor(
     private characterStore: Store<fromCharacter.State>,
     private missionStore: Store<fromMission.State>
   ) {
-    this.character$.pipe(takeUntil(this.onDestroy$)).subscribe(() => {
-      this.missionStore.dispatch(MissionActions.getMissionsRequest());
+    this.character$.pipe(takeUntil(this.onDestroy$)).subscribe(character => {
+      if (character && this.characterId !== character.id) {
+        this.characterId = character.id;
+        this.missionStore.dispatch(MissionActions.getMissionsRequest());
+      }
     });
   }
   ngOnDestroy() {

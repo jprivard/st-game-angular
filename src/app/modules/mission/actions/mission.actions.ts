@@ -13,3 +13,8 @@ export const getMissionsFail = createAction('[Mission] Get Missions Fail',
 export const setSelectedMission = createAction('[Mission] Set Selected Mission',
   props<{ id: number }>()
 );
+
+// Navigation
+export const redirectMissionPage = createAction('[Mission] Redirect Mission Page',
+  props<{ id: number }>()
+);
