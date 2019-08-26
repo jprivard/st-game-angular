@@ -11,7 +11,7 @@ export interface MissionState {
 }
 
 export const initialState: MissionState = {
-  list: null,
+  list: [],
   selected: null,
   process: {
     error: null,
@@ -33,4 +33,7 @@ export const reducer = createReducer(
       ...initialState.process, status: ProcessStatus.Completed
     }
   })),
+  on(MissionActions.setSelectedMission, (state, { id }) => ({
+    ...state, selected: id
+  }))
 );

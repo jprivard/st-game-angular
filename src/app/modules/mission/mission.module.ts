@@ -12,8 +12,11 @@ import { MaterialModule } from '../material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardComponent } from './containers/dashboard.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { PageComponent } from './containers/page.component';
+import { MissionRoutingModule } from './auth-routing.module';
 
 const COMPONENTS = [
+  PageComponent,
   DashboardComponent,
   CardComponent
 ];
@@ -26,6 +29,7 @@ const COMPONENTS = [
     MaterialModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MissionRoutingModule,
     TranslateModule.forChild(),
     StoreModule.forFeature(fromMission.missionFeatureKey, fromMission.reducer),
     EffectsModule.forFeature([MissionEffects]),

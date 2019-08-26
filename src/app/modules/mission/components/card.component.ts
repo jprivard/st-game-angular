@@ -10,7 +10,9 @@ import { Mission } from '../models/mission.model';
       {{ mission.description }}
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button mat-flat-button color="primary">
+      <span> {{ 'MISSION.PARTICIPANTS' | translate: { number: mission.participants.length } }} </span>
+      <button mat-button mat-flat-button color="primary" [matBadgeHidden]="mission.unreadMessages === 0"
+        [matBadge]="mission.unreadMessages" matBadgeColor="warn" >
         {{ (mission.active ? 'MISSION.PARTICIPATE' : 'MISSION.READ') | translate }}
       </button>
     </mat-card-actions>

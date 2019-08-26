@@ -54,6 +54,7 @@
   },
   "MISSION": {
     "LOGS": "Mission Logs",
+    "PARTICIPANTS": "{{ number }} participants",
     "PARTICIPATE": "Continuer l'histoire",
     "READ": "Lire l'archive"
   },
