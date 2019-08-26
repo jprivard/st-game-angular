@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot } from '@angular/router';
 import { Store, select } from '@ngrx/store';
-import { Observable, of } from 'rxjs';
+import { Observable, of, pipe } from 'rxjs';
 import { take, map, tap, skipWhile, exhaustMap } from 'rxjs/operators';
 import * as fromMission from '../reducers';
 import * as fromCharacter from '../../character/reducers';

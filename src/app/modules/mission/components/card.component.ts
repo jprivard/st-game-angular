@@ -28,7 +28,6 @@ export class CardComponent implements OnInit {
   constructor(private store: Store<fromMission.State>) {}
   ngOnInit() {}
   goToMission(id: number) {
-    console.log('lol?');
     this.store.dispatch(MissionActions.redirectMissionPage({ id }));
   }
 }

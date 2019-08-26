@@ -17,7 +17,6 @@ export class AuthGuard implements CanActivate {
       select(fromAuth.getIsAuth),
       skipWhile(val => typeof val === 'undefined'),
       map(authed => {
-        console.log(authed);
         if (!authed) {
           this.store.dispatch(AuthActions.loginRedirect());
         }

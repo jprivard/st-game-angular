@@ -1,5 +1,5 @@
 import * as fromMission from '../reducers';
-import * as fromCharacter from '../../character/reducers';
+import * as fromAuth from '../../auth/reducers';
 import { Store, select } from '@ngrx/store';
 import { Component, OnDestroy } from '@angular/core';
 import { MissionActions } from '../actions';
@@ -25,17 +25,17 @@ import { takeUntil } from 'rxjs/operators';
   `]
 })
 export class DashboardComponent implements OnDestroy {
-  character$ = this.characterStore.pipe(select(fromCharacter.getSelectedCharacter));
+  user$ = this.authStore.pipe(select(fromAuth.getUser));
   missions$ = this.missionStore.pipe(select(fromMission.getMissions));
   onDestroy$ = new Subject();
   characterId = 0;
   constructor(
-    private characterStore: Store<fromCharacter.State>,
+    private authStore: Store<fromAuth.State>,
     private missionStore: Store<fromMission.State>
   ) {
-    this.character$.pipe(takeUntil(this.onDestroy$)).subscribe(character => {
-      if (character && this.characterId !== character.id) {
-        this.characterId = character.id;
+    this.user$.pipe(takeUntil(this.onDestroy$)).subscribe(user => {
+      if (user && this.characterId !== user.selectedCharacter) {
+        this.characterId = user.selectedCharacter;
         this.missionStore.dispatch(MissionActions.getMissionsRequest());
       }
     });
