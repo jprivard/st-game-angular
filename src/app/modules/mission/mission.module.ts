@@ -14,11 +14,16 @@ import { DashboardComponent } from './containers/dashboard.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { PageComponent } from './containers/page.component';
 import { MissionRoutingModule } from './auth-routing.module';
+import { CharacterModule } from '../character/character.module';
+import { ParticipantsComponent } from './components/participants.component';
+import { MessagesComponent } from './components/messages.component';
 
 const COMPONENTS = [
   PageComponent,
   DashboardComponent,
-  CardComponent
+  CardComponent,
+  ParticipantsComponent,
+  MessagesComponent,
 ];
 
 @NgModule({
@@ -30,6 +35,7 @@ const COMPONENTS = [
     HttpClientModule,
     BrowserAnimationsModule,
     MissionRoutingModule,
+    CharacterModule,
     TranslateModule.forChild(),
     StoreModule.forFeature(fromMission.missionFeatureKey, fromMission.reducer),
     EffectsModule.forFeature([MissionEffects]),

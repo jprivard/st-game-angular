@@ -1,6 +1,8 @@
 <mat-toolbar id="lcars" color="primary">
-  <span class="logo"></span>
-  <span class="title">Starbase 99</span>
+  <span class="link" (click)="goToHome()">
+    <span class="logo"></span>
+    <span class="title">Starbase 99</span>
+  </span>
   <span class="spacer"></span>
   <button mat-button [matMenuTriggerFor]="menu">
     <span *ngIf="(loggedIn$ | async) && (character$ | async) !== null">{{ (character$ | async) | fullname }}</span>

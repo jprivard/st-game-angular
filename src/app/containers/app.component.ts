@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   character$ = this.characterStore.pipe(select(fromCharacter.getSelectedCharacter));
   loggedIn$ = this.authStore.pipe(select(fromAuth.getLoggedIn));
   isAdmin$ = this.authStore.pipe(select(fromAuth.getIsAdmin));
+
   constructor(
     public translate: TranslateService,
     private characterStore: Store<fromCharacter.State>,
@@ -25,15 +26,23 @@ export class AppComponent implements OnInit {
   }
 
   public ngOnInit() {}
+
+  public goToHome() {
+    this.authStore.dispatch(AuthActions.authedRedirect());
+  }
+
   public login() {
     this.authStore.dispatch(AuthActions.loginRedirect());
   }
+
   public logout() {
     this.authStore.dispatch(AuthActions.logoutRequest());
   }
+
   public chooseCharacter() {
     this.characterStore.dispatch(CharacterActions.chooseCharacter());
   }
+
   public createCharacter() {
     this.characterStore.dispatch(CharacterActions.createCharacter());
   }

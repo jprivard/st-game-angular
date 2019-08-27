@@ -19,11 +19,7 @@ import { takeUntil } from 'rxjs/operators';
       </div>
     </div>
   </div>`,
-  styles: [`
-  .container {
-    margin-top: 25px;
-  }
-  `]
+  styles: [``]
 })
 export class DashboardComponent implements OnDestroy {
   user$ = this.authStore.pipe(select(fromAuth.getUser));

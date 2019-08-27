@@ -53,6 +53,8 @@
     }
   },
   "MISSION": {
+    "COMMUNICATIONS": "Communications",
+    "DESCRIPTION": "Description",
     "LOGS": "Mission Logs",
     "PARTICIPANTS": "{{ number }} participants",
     "PARTICIPATE": "Continuer l'histoire",

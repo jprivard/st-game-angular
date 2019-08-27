@@ -15,6 +15,7 @@ import {
   MatDatepickerModule,
   MatNativeDateModule,
   MatBadgeModule,
+  MatExpansionModule,
 } from '@angular/material';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -35,6 +36,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatDatepickerModule,
     MatNativeDateModule,
     MatBadgeModule,
+    MatExpansionModule,
     NgbModule,
   ],
   exports: [
@@ -53,6 +55,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatDatepickerModule,
     MatNativeDateModule,
     MatBadgeModule,
+    MatExpansionModule,
     NgbModule,
   ],
 })

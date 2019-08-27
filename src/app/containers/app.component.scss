@@ -14,13 +14,23 @@ mat-icon {
   margin-left: 5px;
 }
 
+.link {
+  cursor: pointer;
+}
+
 .logo {
+  float: left;
   display: block;
   background-color: white;
   width: 60px;
   height: 60px;
   -webkit-mask-image: url('../../assets/images/starfleet.svg');
   mask-image: url('../../assets/images/starfleet.svg');
+}
+
+.title {
+  position: relative;
+  top: 10px;
 }
 
 #lcars {
