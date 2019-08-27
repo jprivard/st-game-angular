@@ -53,7 +53,7 @@
     }
   },
   "MISSION": {
-    "COMMUNICATIONS": "Communications",
+    "COMMUNICATIONS": "Communication Logs",
     "DESCRIPTION": "Description",
     "LOGS": "Mission Logs",
     "PARTICIPANTS": "{{ number }} participants",

@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { takeUntil, take, skipWhile } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { Message } from '../models/message.model';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-page-mission',
@@ -22,6 +23,22 @@ import { Message } from '../models/message.model';
                 <mat-card-content>
                   {{ mission.description }}
                 </mat-card-content>
+                <mat-card-actions>
+                  <mat-button-toggle-group multiple [formControl]="filters" #group="matButtonToggleGroup">
+                    <mat-button-toggle value="new" multiple aria-label="Nouveaux">
+                      <mat-icon>new_releases</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle value="story" aria-label="Histoire">
+                      <mat-icon>chrome_reader_mode</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle value="rp" aria-label="Roleplay">
+                      <mat-icon>person</mat-icon>
+                    </mat-button-toggle>
+                    <mat-button-toggle value="hrp" aria-label="Hors-Roleplay">
+                      <mat-icon>people_alt</mat-icon>
+                    </mat-button-toggle>
+                  </mat-button-toggle-group>
+                </mat-card-actions>
               </mat-card>
             </div>
             <div class="col-12 col-md-4">
@@ -30,7 +47,7 @@ import { Message } from '../models/message.model';
           </div>
           <div class="row">
             <div class="col-12" *ngIf="(messages$ | async) as messages">
-              <app-mission-messages [mission]="mission" [messages]="messages" [step]="step"
+              <app-mission-messages [filters]="filters.value" [messages]="messages" [step]="step"
                 [participants]="participants" (markAsRead)="markAsRead($event)">
               </app-mission-messages>
             </div>
@@ -45,9 +62,10 @@ export class PageComponent implements OnDestroy {
   participants$ = this.missionStore.pipe(select(fromMission.getParticipants));
   mission$ = this.missionStore.pipe(select(fromMission.getSelectedMission));
   messages$ = this.missionStore.pipe(select(fromMission.getMessages));
+  onDestroy$ = new Subject();
+  filters = new FormControl(['new', 'story', 'rp', 'hrp']);
   missionId = 0;
   step = 0;
-  onDestroy$ = new Subject();
 
   constructor(
     private missionStore: Store<fromMission.State>,
