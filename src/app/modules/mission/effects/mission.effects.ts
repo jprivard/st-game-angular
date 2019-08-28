@@ -26,7 +26,8 @@ export class MissionEffects {
     map(action => action.id),
     switchMap(id => [
       MissionActions.getParticipantsRequest({ id }),
-      MissionActions.getMessagesRequest({ id })
+      MissionActions.getMessagesRequest({ id }),
+      MissionActions.getGroupsRequest({ id }),
     ])
   ));
 
@@ -48,6 +49,17 @@ export class MissionEffects {
       this.service.getMessages(id).pipe(
         map(messages => MissionActions.getMessagesSuccess({ messages })),
         catchError(error => of(MissionActions.getMessagesFail({ error })))
+      )
+    )
+  ));
+
+  groups$ = createEffect(() => this.actions$.pipe(
+    ofType(MissionActions.getGroupsRequest),
+    map(action => action.id),
+    exhaustMap(id =>
+      this.service.getGroups(id).pipe(
+        map(groups => MissionActions.getGroupsSuccess({ groups })),
+        catchError(error => of(MissionActions.getGroupsFail({ error })))
       )
     )
   ));

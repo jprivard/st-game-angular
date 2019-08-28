@@ -53,8 +53,8 @@ mat-card.mat-card {
     border-image-slice: 10 10 10 10;
     mat-card-title {
       background: url("./assets/images/card-header-left-orange.png") top left no-repeat,
-      url("./assets/images/card-header-right-orange.png") top right no-repeat,
-      url("./assets/images/card-header-middle-orange.png") top repeat;
+                  url("./assets/images/card-header-right-orange.png") top right no-repeat,
+                  url("./assets/images/card-header-middle-orange.png") top repeat;
     }
   }
   &.grey {
@@ -62,8 +62,8 @@ mat-card.mat-card {
     border-image-slice: 10 10 10 10;
     mat-card-title {
       background: url("./assets/images/card-header-left-grey.png") top left no-repeat,
-      url("./assets/images/card-header-right-grey.png") top right no-repeat,
-      url("./assets/images/card-header-middle-grey.png") top repeat;
+                  url("./assets/images/card-header-right-grey.png") top right no-repeat,
+                  url("./assets/images/card-header-middle-grey.png") top repeat;
     }
   }
   mat-card-title {
@@ -152,6 +152,10 @@ button.mat-flat-button[disabled][disabled] {
   color: rgb(50, 50, 50);
 }
 
+button:focus {
+  outline: none;
+}
+
 .container {
   margin-top: 25px;
 }
@@ -172,12 +176,6 @@ button.mat-flat-button[disabled][disabled] {
   margin-top: 20px;
 }
 
-.ck-editor__top {
-  margin-top: 30px !important;
-}
-
 .ck-editor__editable {
-  background-color: black !important;
-  color: white;
-  min-height: 300px !important;
+  min-height: 200px !important;
 }

@@ -5,11 +5,13 @@ import { Mission } from '../models/mission.model';
 import { MissionActions } from '../actions';
 import { Participant } from '../models/participant.model';
 import { Message } from '../models/message.model';
+import { Group } from '../models/group.model';
 
 export interface MissionState {
   list: Mission[];
   participants: Participant[];
   messages: Message[];
+  groups: Group[];
   selected: number;
   process: ProcessInterface;
 }
@@ -18,6 +20,7 @@ export const initialState: MissionState = {
   list: [],
   participants: [],
   messages: [],
+  groups: [],
   selected: null,
   process: {
     error: null,
@@ -59,6 +62,16 @@ export const reducer = createReducer(
   })),
   on(MissionActions.getMessagesSuccess, (state, { messages }) => ({
     ...state, messages, process : {
+      ...state.process, status: ProcessStatus.Completed
+    }
+  })),
+  on(MissionActions.getGroupsRequest, (state, { id }) => ({
+    ...state, messages: [], process : {
+      ...state.process, status: ProcessStatus.Processing
+    }
+  })),
+  on(MissionActions.getGroupsSuccess, (state, { groups }) => ({
+    ...state, groups, process : {
       ...state.process, status: ProcessStatus.Completed
     }
   })),

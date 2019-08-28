@@ -25,16 +25,16 @@ import { FormControl } from '@angular/forms';
                 </mat-card-content>
                 <mat-card-actions>
                   <mat-button-toggle-group multiple [formControl]="filters" #group="matButtonToggleGroup">
-                    <mat-button-toggle value="new" multiple aria-label="Nouveaux">
+                    <mat-button-toggle value="new" matTooltip="Nouveaux messages" multiple aria-label="Nouveaux">
                       <mat-icon>new_releases</mat-icon>
                     </mat-button-toggle>
-                    <mat-button-toggle value="story" aria-label="Histoire">
+                    <mat-button-toggle value="story" matTooltip="Histoire" aria-label="Histoire">
                       <mat-icon>chrome_reader_mode</mat-icon>
                     </mat-button-toggle>
-                    <mat-button-toggle value="rp" aria-label="Roleplay">
+                    <mat-button-toggle value="rp" matTooltip="Role-Play" aria-label="Roleplay">
                       <mat-icon>person</mat-icon>
                     </mat-button-toggle>
-                    <mat-button-toggle value="hrp" aria-label="Hors-Roleplay">
+                    <mat-button-toggle value="hrp" matTooltip="Hors Role-Play" aria-label="Hors-Roleplay">
                       <mat-icon>people_alt</mat-icon>
                     </mat-button-toggle>
                   </mat-button-toggle-group>
@@ -48,7 +48,7 @@ import { FormControl } from '@angular/forms';
           <div class="row">
             <div class="col-12" *ngIf="(messages$ | async) as messages">
               <app-mission-messages [filters]="filters.value" [messages]="messages" [step]="step"
-                [participants]="participants" (markAsRead)="markAsRead($event)">
+                [groups]="groups$ | async" [participants]="participants" (markAsRead)="markAsRead($event)">
               </app-mission-messages>
             </div>
           </div>
@@ -62,6 +62,7 @@ export class PageComponent implements OnDestroy {
   participants$ = this.missionStore.pipe(select(fromMission.getParticipants));
   mission$ = this.missionStore.pipe(select(fromMission.getSelectedMission));
   messages$ = this.missionStore.pipe(select(fromMission.getMessages));
+  groups$ = this.missionStore.pipe(select(fromMission.getGroups));
   onDestroy$ = new Subject();
   step: number;
   filters = new FormControl(['new', 'story', 'rp', 'hrp']);
@@ -79,7 +80,7 @@ export class PageComponent implements OnDestroy {
     });
     this.messages$.pipe(skipWhile(m => m.length === 0), take(1)).subscribe(messages => {
       const lastRead = messages.findIndex(m => !m.read);
-      this.step = lastRead === -1 ? messages.length - 1 : lastRead;
+      this.step = lastRead === -1 ? messages.length : lastRead;
     });
   }
 

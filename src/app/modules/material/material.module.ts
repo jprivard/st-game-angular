@@ -17,6 +17,7 @@ import {
   MatBadgeModule,
   MatExpansionModule,
   MatButtonToggleModule,
+  MatTooltipModule,
 } from '@angular/material';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -39,6 +40,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatBadgeModule,
     MatExpansionModule,
     MatButtonToggleModule,
+    MatTooltipModule,
     NgbModule,
   ],
   exports: [
@@ -59,6 +61,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatBadgeModule,
     MatExpansionModule,
     MatButtonToggleModule,
+    MatTooltipModule,
     NgbModule,
   ],
 })

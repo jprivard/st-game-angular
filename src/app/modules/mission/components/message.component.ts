@@ -6,8 +6,8 @@ import { Message } from '../models/message.model';
   selector: 'app-mission-message',
   template: `
   <mat-expansion-panel [expanded] = "expanded" (opened) = "reading.emit(message)">
-    <mat-expansion-panel-header collapsedHeight="30px" expandedHeight="36px">
-    <mat-panel-title class="col-5">
+    <mat-expansion-panel-header collapsedHeight="36px" expandedHeight="36px">
+    <mat-panel-title class="col-6">
       <mat-icon [ngClass]="{ 'hidden': message.read }">new_releases</mat-icon>
       <mat-icon class="icon">{{ icons[message.type] }}</mat-icon>
       <mat-icon class="icon">account_circle</mat-icon> {{ participant | fullname }}

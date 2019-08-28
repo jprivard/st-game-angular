@@ -4,6 +4,7 @@ import { MissionState } from './mission.reducer';
 import { Mission } from '../models/mission.model';
 import { Participant } from '../models/participant.model';
 import { Message } from '../models/message.model';
+import { Group } from '../models/group.model';
 
 // Export necessity for functionning reducer
 export * from './mission.reducer';
@@ -25,4 +26,7 @@ export const getParticipants = createSelector(selectMissionState,
 );
 export const getMessages = createSelector(selectMissionState,
   (state: MissionState): Message[] => state.messages
+);
+export const getGroups = createSelector(selectMissionState,
+  (state: MissionState): Group[] => state.groups
 );
