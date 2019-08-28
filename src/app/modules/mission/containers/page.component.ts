@@ -2,7 +2,7 @@ import * as fromMission from '../reducers';
 import { Store, select } from '@ngrx/store';
 import { Component, OnDestroy } from '@angular/core';
 import { MissionActions } from '../actions';
-import { Subject } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 import { takeUntil, take, skipWhile } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { Message } from '../models/message.model';
@@ -63,9 +63,9 @@ export class PageComponent implements OnDestroy {
   mission$ = this.missionStore.pipe(select(fromMission.getSelectedMission));
   messages$ = this.missionStore.pipe(select(fromMission.getMessages));
   onDestroy$ = new Subject();
+  step: number;
   filters = new FormControl(['new', 'story', 'rp', 'hrp']);
   missionId = 0;
-  step = 0;
 
   constructor(
     private missionStore: Store<fromMission.State>,

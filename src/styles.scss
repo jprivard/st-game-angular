@@ -171,3 +171,12 @@ button.mat-flat-button[disabled][disabled] {
 .mat-expansion-panel-body {
   margin-top: 20px;
 }
+
+.ck-editor__top {
+  margin-top: 30px !important;
+}
+
+.ck-editor__editable {
+  background-color: black !important;
+  min-height: 300px !important;
+}

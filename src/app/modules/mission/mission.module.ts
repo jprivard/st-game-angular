@@ -17,6 +17,9 @@ import { MissionRoutingModule } from './auth-routing.module';
 import { CharacterModule } from '../character/character.module';
 import { ParticipantsComponent } from './components/participants.component';
 import { MessagesComponent } from './components/messages.component';
+import { MessageComponent } from './components/message.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { ReplyComponent } from './components/reply.component';
 
 const COMPONENTS = [
   PageComponent,
@@ -24,6 +27,8 @@ const COMPONENTS = [
   CardComponent,
   ParticipantsComponent,
   MessagesComponent,
+  MessageComponent,
+  ReplyComponent,
 ];
 
 @NgModule({
@@ -36,6 +41,7 @@ const COMPONENTS = [
     BrowserAnimationsModule,
     MissionRoutingModule,
     CharacterModule,
+    CKEditorModule,
     TranslateModule.forChild(),
     StoreModule.forFeature(fromMission.missionFeatureKey, fromMission.reducer),
     EffectsModule.forFeature([MissionEffects]),

@@ -18,7 +18,6 @@ import { MAT_DATE_LOCALE } from '@angular/material';
 import { RaceModule } from './modules/race/race.module';
 import { RankModule } from './modules/rank/rank.module';
 import { DashboardComponent } from './containers/dashboard.component';
-import { CardComponent } from './modules/character/components/card.component';
 import { MissionModule } from './modules/mission/mission.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
