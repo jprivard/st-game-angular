@@ -20,6 +20,7 @@ import { MessagesComponent } from './components/messages.component';
 import { MessageComponent } from './components/message.component';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { ReplyComponent } from './components/reply.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 const COMPONENTS = [
   PageComponent,
@@ -29,6 +30,10 @@ const COMPONENTS = [
   MessagesComponent,
   MessageComponent,
   ReplyComponent,
+];
+
+const PIPES = [
+  FilterPipe
 ];
 
 @NgModule({
@@ -46,8 +51,8 @@ const COMPONENTS = [
     StoreModule.forFeature(fromMission.missionFeatureKey, fromMission.reducer),
     EffectsModule.forFeature([MissionEffects]),
   ],
-  declarations: [COMPONENTS],
+  declarations: [COMPONENTS, PIPES],
   entryComponents: [],
-  exports: [COMPONENTS]
+  exports: [COMPONENTS, PIPES]
 })
 export class MissionModule {}
