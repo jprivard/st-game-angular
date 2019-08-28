@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Participant } from '../models/participant.model';
 import { Message } from '../models/message.model';
 import { Group } from '../models/group.model';
+import { Post } from '../models/post.model';
 
 @Component({
   selector: 'app-mission-messages',
@@ -16,7 +17,7 @@ import { Group } from '../models/group.model';
             (reading)="reading(filteredMessages, $event)" (moveStep)="moveStep($event)"
         ></app-mission-message>
         <app-mission-reply [expanded]="step === filteredMessages.length" [groups]="groups"
-            (reading)="reading(filteredMessages, $event)"
+            (publishMessage)="postMessage($event)" (reading)="reading(filteredMessages, $event)"
         ></app-mission-reply>
     </mat-accordion>
   </mat-card-content>
@@ -31,6 +32,7 @@ export class MessagesComponent {
   @Input() public filters;
   @Input() public step: number;
   @Output() public markAsRead = new EventEmitter<Message>();
+  @Output() public publishMessage = new EventEmitter<Post>();
   public lastMessage: Message;
   constructor() {}
 
@@ -48,5 +50,9 @@ export class MessagesComponent {
 
   public moveStep(direction: number) {
     this.step += direction;
+  }
+
+  public postMessage(post: Post) {
+    this.publishMessage.emit(post);
   }
 }

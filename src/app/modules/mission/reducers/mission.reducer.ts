@@ -75,6 +75,17 @@ export const reducer = createReducer(
       ...state.process, status: ProcessStatus.Completed
     }
   })),
+  on(MissionActions.postMessageRequest, (state, { post }) => ({
+    ...state, process : {
+      ...state.process, status: ProcessStatus.Completed
+    }
+  })),
+  on(MissionActions.postMessageSuccess, (state, { message }) => ({
+      ...state, messages : [...state.messages].concat(message), process : {
+        ...state.process, status: ProcessStatus.Completed
+      }
+    }
+  )),
   on(MissionActions.setMarkAsReadRequest, (state, { mission, message }) => ({
     ...state, process : {
       ...state.process, status: ProcessStatus.Processing

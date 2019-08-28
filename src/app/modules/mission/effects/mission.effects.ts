@@ -64,6 +64,17 @@ export class MissionEffects {
     )
   ));
 
+  publish$ = createEffect(() => this.actions$.pipe(
+    ofType(MissionActions.postMessageRequest),
+    map(action => action.post),
+    exhaustMap(post =>
+      this.service.publishMessage(post).pipe(
+        map(message => MissionActions.postMessageSuccess({ message })),
+        catchError(error => of(MissionActions.postMessageFail({ error })))
+      )
+    )
+  ));
+
   read$ = createEffect(() => this.actions$.pipe(
     ofType(MissionActions.setMarkAsReadRequest),
     exhaustMap(action =>

@@ -3,6 +3,7 @@ import { Mission } from '../models/mission.model';
 import { Participant } from '../models/participant.model';
 import { Message } from '../models/message.model';
 import { Group } from '../models/group.model';
+import { Post } from '../models/post.model';
 
 // Get Missions sequence
 export const getMissionsRequest = createAction('[Mission] Get Missions Request');
@@ -35,7 +36,7 @@ export const getMessagesFail = createAction('[Mission] Get Messages Fail',
   props<{ error: string }>()
 );
 
-// Get Mission's messages Sequence
+// Get Mission's Groups Sequence
 export const getGroupsRequest = createAction('[Mission] Get Groups Request',
   props<{ id: number }>()
 );
@@ -56,6 +57,18 @@ export const setMarkAsReadSuccess = createAction('[Mission] Mark as Read Success
 export const setMarkAsReadFail = createAction('[Mission] Mark as Read Fail',
   props<{ error: string }>()
 );
+
+// Post a new message Sequence
+export const postMessageRequest = createAction('[Mission] Post Message Request',
+  props<{ post: Post }>()
+);
+export const postMessageSuccess = createAction('[Mission] Post Message Success',
+  props<{ message: Message }>()
+);
+export const postMessageFail = createAction('[Mission] Post Message Fail',
+  props<{ error: string }>()
+);
+
 
 export const setSelectedMission = createAction('[Mission] Set Selected Mission',
   props<{ id: number }>()

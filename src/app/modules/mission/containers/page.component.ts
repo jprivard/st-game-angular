@@ -7,6 +7,8 @@ import { takeUntil, take, skipWhile } from 'rxjs/operators';
 import { ActivatedRoute } from '@angular/router';
 import { Message } from '../models/message.model';
 import { FormControl } from '@angular/forms';
+import { Mission } from '../models/mission.model';
+import { Post } from '../models/post.model';
 
 @Component({
   selector: 'app-page-mission',
@@ -48,7 +50,8 @@ import { FormControl } from '@angular/forms';
           <div class="row">
             <div class="col-12" *ngIf="(messages$ | async) as messages">
               <app-mission-messages [filters]="filters.value" [messages]="messages" [step]="step"
-                [groups]="groups$ | async" [participants]="participants" (markAsRead)="markAsRead($event)">
+                [groups]="groups$ | async" [participants]="participants"
+                (publishMessage)="publishMessage(this.missionId, $event)" (markAsRead)="markAsRead($event)">
               </app-mission-messages>
             </div>
           </div>
@@ -86,6 +89,12 @@ export class PageComponent implements OnDestroy {
 
   markAsRead(message: Message) {
     this.missionStore.dispatch(MissionActions.setMarkAsReadRequest({ mission: this.missionId, message: message.id }));
+  }
+
+  publishMessage(missionId: number, post: Post) {
+    post.mission = missionId;
+    this.missionStore.dispatch(MissionActions.postMessageRequest({ post }));
+    this.step += 1;
   }
 
   ngOnDestroy() {

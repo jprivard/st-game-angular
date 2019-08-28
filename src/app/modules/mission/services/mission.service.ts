@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 import { Participant } from '../models/participant.model';
 import { Message } from '../models/message.model';
 import { Group } from '../models/group.model';
+import { Post } from '../models/post.model';
 
 @Injectable({
   providedIn: 'root',
@@ -37,6 +38,11 @@ export class MissionService {
   public markAsRead(mission: number, message: number): Observable<string> {
     const url = `${environment.apiUrl}mission/${ mission }/message/${ message }/read`;
     return this.http.get<{ message: string }>(url, this.options()).pipe(map(v => v.message || null));
+  }
+
+  public publishMessage(post: Post): Observable<Message> {
+    const url = `${environment.apiUrl}mission/${ post.mission }/message/`;
+    return this.http.post<{ message: Message }>(url, post, this.options()).pipe(map(v => v.message || null));
   }
 
   private options(headers?: HttpHeaders) {

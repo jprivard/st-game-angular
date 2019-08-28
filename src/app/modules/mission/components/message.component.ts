@@ -16,7 +16,7 @@ import { Message } from '../models/message.model';
       <mat-icon class="icon">event</mat-icon> {{ message.creationDate | date: 'dd/MM/yyyy HH:mm:ss' }}
     </mat-panel-description>
     </mat-expansion-panel-header>
-     {{ message.message }}
+     <div [innerHTML]="message.message"></div>
     <mat-action-row>
       <button mat-button color="warn" [disabled]="isFirst" (click)="moveStep.emit(-1)">Previous</button>
       <button mat-button color="primary" (click)="moveStep.emit(1)">{{ isLast ? 'Reply' : 'Next' }}</button>

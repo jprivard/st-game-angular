@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Group } from '../models/group.model';
+import { Post } from '../models/post.model';
 
 @Component({
   selector: 'app-mission-reply',
@@ -17,13 +18,13 @@ import { Group } from '../models/group.model';
       <div class="row">
         <div class="col-12 col-md-4">
           <mat-button-toggle-group formControlName="type">
-            <mat-button-toggle value="story" matTooltip="Histoire" aria-label="Histoire">
+            <mat-button-toggle value="1" matTooltip="Histoire" aria-label="Histoire">
               <mat-icon>chrome_reader_mode</mat-icon>
             </mat-button-toggle>
-            <mat-button-toggle value="rp" matTooltip="Role-Play" aria-label="Roleplay">
+            <mat-button-toggle value="2" matTooltip="Role-Play" aria-label="Roleplay">
               <mat-icon>person</mat-icon>
             </mat-button-toggle>
-            <mat-button-toggle value="hrp" matTooltip="Hors Role-Play" aria-label="Hors-Roleplay">
+            <mat-button-toggle value="3" matTooltip="Hors Role-Play" aria-label="Hors-Roleplay">
               <mat-icon>people_alt</mat-icon>
             </mat-button-toggle>
           </mat-button-toggle-group>
@@ -45,8 +46,8 @@ import { Group } from '../models/group.model';
   `,
   styles: [`
   mat-panel-title > mat-icon {
-    margin-left: 25px;
-    margin-right: 54px;
+    margin-left: 63px;
+    margin-right: 15px;
   }
   .row {
     margin-top: 20px;
@@ -57,6 +58,7 @@ export class ReplyComponent {
   @Input() groups: Group[];
   @Input() expanded: boolean;
   @Output() reading = new EventEmitter<number>();
+  @Output() publishMessage = new EventEmitter<Post>();
   public form = new FormGroup({
     message: new FormControl('', Validators.required),
     group: new FormControl('', Validators.required),
@@ -66,6 +68,6 @@ export class ReplyComponent {
   constructor() {}
 
   public sendForm() {
-    console.log(this.form.getRawValue());
+    this.publishMessage.emit(this.form.getRawValue() as Post);
   }
 }
