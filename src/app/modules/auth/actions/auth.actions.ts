@@ -20,6 +20,18 @@ export const loginFail = createAction('[Auth] Login Fail',
   props<{ error: string }>()
 );
 
+
+// Login sequence
+export const createRequest = createAction('[Auth] Create Request',
+  props<{ credentials: Credentials }>()
+);
+export const createSuccess = createAction('[Auth] Create Success',
+  props<{ message: string }>()
+);
+export const createFail = createAction('[Auth] Create Fail',
+  props<{ error: string }>()
+);
+
 // Update Selected Character of account
 export const updateSelectedCharacter = createAction('[Auth] Update Selected Character',
   props<{ user: User }>()

@@ -46,6 +46,21 @@ export const reducer = createReducer(
       ...initialState.process, error, status: ProcessStatus.Failed
     }})
   ),
+  on(AuthActions.createRequest, (state) => ({
+    ...state, process: {
+      ...initialState.process, status: ProcessStatus.Processing
+    }})
+  ),
+  on(AuthActions.createSuccess, (state, { message }) => ({
+    ...state, process: {
+      ...initialState.process, status: ProcessStatus.Completed
+    }})
+  ),
+  on(AuthActions.createFail, (state, { error }) => ({
+    ...state, process: {
+      ...initialState.process, error, status: ProcessStatus.Failed
+    }})
+  ),
   on(AuthActions.logoutRequest, (state) => ({
     ...state, process: {
       ...initialState.process, status: ProcessStatus.Processing

@@ -25,7 +25,7 @@ export class DashboardComponent implements OnDestroy {
   user$ = this.authStore.pipe(select(fromAuth.getUser));
   character$ = this.characterStore.pipe(select(fromCharacter.getSelectedCharacter));
   onDestroy$ = new Subject();
-  selected = 0;
+  selected = -1;
   constructor(
     private authStore: Store<fromAuth.State>,
     private characterStore: Store<fromCharacter.State>

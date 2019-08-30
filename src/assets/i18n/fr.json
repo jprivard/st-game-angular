@@ -1,5 +1,9 @@
 {
   "AUTH": {
+    "CREATE": "Créer",
+    "CREATE_INVALID": "Votre compte n'a pas été trouvé. Contactez l'administrateur du site.",
+    "CREATE_INVITE": "Si un compte sans mot de passe vous a été créé, inscrivez <br/> votre courriel et le mot de passe désiré pour compléter l'inscription.",
+    "CREATE_SUCCESS": "La modification a été apportée avec succèes ! Connectez-vous pour ouvrir une session.",
     "HEADER": "Ouverture de session",
     "EMAIL": "Courriel",
     "PASSWORD": "Mot de passe",

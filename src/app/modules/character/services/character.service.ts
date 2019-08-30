@@ -19,7 +19,7 @@ export class CharacterService {
 
   public create(character: Character): Observable<Character[]> {
     const url = `${environment.apiUrl}characters/`;
-    return this.http.post<{ character: Character[] }>(url, character, this.options()).pipe(map(v => v.character || null));
+    return this.http.post<{ characters: Character[] }>(url, character, this.options()).pipe(map(v => v.characters || null));
   }
 
   public setSelected(character: Character): Observable<User> {

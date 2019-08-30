@@ -24,3 +24,6 @@ export const getError = createSelector(selectAuthState, (state: AuthState) => st
 export const getIsPending = createSelector(selectAuthState, (state: AuthState) => {
   return state.process.status === ProcessStatus.Processing;
 });
+export const getIsCompleted = createSelector(selectAuthState, (state: AuthState) => {
+  return state.process.status === ProcessStatus.Completed;
+});

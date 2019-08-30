@@ -46,6 +46,20 @@ export class AuthEffects {
     )
   );
 
+
+  create$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.createRequest),
+      map(action => action.credentials),
+      exhaustMap((auth: Credentials) =>
+        this.authService.create(auth).pipe(
+          map(message => AuthActions.createSuccess({ message })),
+          catchError(({ error }) => of(AuthActions.createFail(error)))
+        )
+      )
+    )
+  );
+
   logout$ = createEffect(() =>
     this.actions$.pipe(
       ofType(AuthActions.logoutRequest),

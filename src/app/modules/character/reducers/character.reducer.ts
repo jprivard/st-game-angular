@@ -41,11 +41,13 @@ export const reducer = createReducer(
       ...initialState.process, status: ProcessStatus.Processing
     }
   })),
-  on(CharacterActions.createCharacterSuccess, (state, { characters }) => ({
+  on(CharacterActions.createCharacterSuccess, (state, { characters }) => {
+    console.log(characters);
+    return ({
     ...state, list: state.list.concat(characters), selected: characters[0], process: {
       ...initialState.process, status: ProcessStatus.Completed
     }
-  })),
+  })}),
 
   /*on(AuthActions.checkSessionRequest, (state) => ({
     ...state, process: {

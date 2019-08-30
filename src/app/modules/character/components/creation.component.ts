@@ -66,8 +66,10 @@ export class CreationComponent implements OnInit, OnDestroy {
         this.form.get('rank').disable();
       }
     });
+    this.character = this.form.getRawValue() as Character;
     this.form.valueChanges.pipe(takeUntil(this.onDestroy$)).subscribe(val => {
-      this.character = ({ ...val, stardateOfBirth: this.formatDate(val.stardateOfBirth) }) as Character;
+      this.character = Object.assign(this.character, ({ ...val, stardateOfBirth: this.formatDate(val.stardateOfBirth) }) as Character);
+      console.log(this.character);
     });
   }
 

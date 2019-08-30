@@ -12,8 +12,12 @@ import { LoginFormComponent } from './components/login-form.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateModule } from '@ngx-translate/core';
+import { CreatePageComponent } from './containers/create-page.component.ts';
+import { CreateFormComponent } from './components/create-form.component';
 
 export const COMPONENTS = [
+  CreatePageComponent,
+  CreateFormComponent,
   LoginPageComponent,
   LoginFormComponent
 ];

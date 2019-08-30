@@ -25,6 +25,14 @@ export class AuthService {
     return this.http.post<{ user: User }>(url, body.toString(), this.options(this.json())).pipe(map(v => v.user || null));
   }
 
+  public create(credentials: Credentials): Observable<string> {
+    const url = `${environment.apiUrl}auth/create`;
+    const body = new URLSearchParams();
+    body.set('username', credentials.email);
+    body.set('password', credentials.password);
+    return this.http.post<{ message: string }>(url, body.toString(), this.options(this.json())).pipe(map(v => v.message || null));
+  }
+
   public logout(): Observable<User> {
     const url = `${environment.apiUrl}auth/logout/`;
     return this.http.get<{ user: User }>(url, this.options()).pipe(map(v => v.user || null));

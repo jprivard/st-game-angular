@@ -3,12 +3,13 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Credentials } from '../models/credentials.model';
 
 @Component({
-  selector: 'app-login-form',
+  selector: 'app-create-form',
   template: `
     <mat-card>
       <mat-card-title>{{ 'AUTH.HEADER' | translate }}</mat-card-title>
-      <mat-card-content>
+      <mat-card-content *ngIf="!completed">
         <form [formGroup]="form" (ngSubmit)="submit()">
+          <p [innerHTML]="'AUTH.CREATE_INVITE' | translate"></p>
           <p>
             <mat-form-field>
               <input
@@ -33,14 +34,23 @@ import { Credentials } from '../models/credentials.model';
 
           <ngb-alert *ngIf="errorMessage" type="danger" [dismissible]="false">
             {{ errorMessage | translate }}
-            {{ errorMessage | translate }}
           </ngb-alert>
 
           <p class="loginButtons">
-            <button type="submit" mat-flat-button color="primary" mat-button>{{ 'AUTH.LOGIN' | translate }}</button>
+            <button type="submit" mat-flat-button color="primary" mat-button>{{ 'AUTH.CREATE' | translate }}</button>
           </p>
         </form>
       </mat-card-content>
+      <mat-card-content *ngIf="completed">
+        <ngb-alert type="success" [dismissible]="false">
+          {{ 'AUTH.CREATE_SUCCESS' | translate }}
+        </ngb-alert>
+      </mat-card-content>
+      <mat-card-actions *ngIf="completed">
+        <p class="loginButtons">
+          <button mat-flat-button color="primary" mat-button (click)="redirect.emit()">{{ 'AUTH.LOGIN' | translate }}</button>
+        </p>
+      </mat-card-actions>
     </mat-card>
   `,
   styles: [
@@ -63,7 +73,7 @@ import { Credentials } from '../models/credentials.model';
       }
 
       ngb-alert {
-        width: 300px;
+        width: 500px;
       }
 
       .loginButtons {
@@ -75,7 +85,7 @@ import { Credentials } from '../models/credentials.model';
     `,
   ],
 })
-export class LoginFormComponent implements OnInit {
+export class CreateFormComponent implements OnInit {
   @Input()
   set pending(isPending: boolean) {
     if (isPending) {
@@ -84,11 +94,10 @@ export class LoginFormComponent implements OnInit {
       this.form.enable();
     }
   }
-
+  @Input() completed: string | null;
   @Input() errorMessage: string | null;
-
   @Output() submitted = new EventEmitter<Credentials>();
-
+  @Output() redirect = new EventEmitter();
   form: FormGroup = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
